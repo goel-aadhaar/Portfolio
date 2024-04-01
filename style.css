@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: rgb(0, 0, 33);
+    color: white;
+    font-family: "Poppins",sans-serif;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    background-color: rgb(6, 6, 42);
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+}
+nav ul li {
+    list-style: none;
+    margin: 0 25px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+nav ul li a:hover {
+    color: rgb(121, 121, 226);
+    font-size: 1.1rem;
+}
+.left {
+    font-size: 2rem;
+}
+.first-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 80px 0;
+    align-items: center;
+}
+#i-like {
+    /* font-style: italic; */
+    font-family: Satisfy;
+}
+.first-section > div {
+    width: 50%;
+}
+.purple {
+    color: rgb(152, 90, 210);
+}
+#element {
+    color: rgb(152, 90, 210);
+}
+#show {
+    font-size: 1.5rem;
+    color: gray;
+}
+.left-section {
+    font-size: 2.5rem;
+    margin-left: 80px;
+}
+.left-section .buttons {
+    padding: 25px;
+}
+.left-section .btn {
+    padding: 13px;
+    color: white;
+    font: 900;
+    background-color: rgb(104, 46, 149);
+    border: 2px solid white;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.right-section {
+    
+}
+.right-section img {
+    width: 80%;
+    margin: 50px;
+}
+main hr {
+    border: 0;
+    background: #9c97f1;
+    height: 1.2px;
+    margin: 40px;
+}
+.second-section {
+    max-width: 80vw;
+    margin: auto;
+    height: 100vh;
+}
+.second-section {
+    font-size: 2.5rem;
+}
+#skill {
+    color: rgb(152, 90, 210);
+}
+.second-section .timeline {
+    background: white;
+    width: 80vw;
+    height: 2px;
+    margin: 50px 0;
+    display: flex;
+}
+.second-section .timeline .vertical {
+    height: 60px;
+    width: 1.2px;
+    background-color: white;
+    margin: 0 100px;
+}
+.vertical img {
+    width: 30px;
+    position: relative;
+    top: -50px;
+    left: -13px;
+}
+.vertical .ver-text {
+    color: rgb(152, 90, 210);
+    font: 700;
+    font-size: 1.25rem;
+    position: relative;
+    top: 50px;
+    width: 150px;
+    left: -30px;
+}
+.vertical .ver-text:hover {
+    color: rgb(121, 121, 226);
+}
+.vertical .ver-desc {
+
+    font-size: 1rem;
+    position: relative;
+    top: 75px;
+    width: 150px;
+    left: -40px;
+}
+footer {
+    background-color: #0e0e1a;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+}
+footer ul {
+    display: flex;
+    justify-content: center;
+}
+footer ul li {
+    list-style: none;
+    margin: 0 50px;
+}
+footer ul li a {
+    text-decoration: none;
+    color: white;
+}
+footer ul li a:hover {
+    color: rgb(121, 121, 226);
+    font-size: 1.1rem;
+}
+.footer {
+    margin: 50px 100px;
+}
+
