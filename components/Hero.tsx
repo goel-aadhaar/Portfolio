@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, Mail, ArrowUpRight, Github, Linkedin, Twitter } from 'lucide-react';
-import { SiCodeforces , SiLeetcode , SiCodechef } from "@icons-pack/react-simple-icons";
+import { MapPin, Mail, ArrowUpRight , Linkedin} from 'lucide-react';
+import { SiGithub , SiX , SiCodeforces , SiLeetcode , SiCodechef } from "@icons-pack/react-simple-icons";
 
 const Hero = () => {
   const [activeButtons, setActiveButtons] = useState<string[]>([]);
@@ -105,9 +105,9 @@ const Hero = () => {
                   className={getSocialBtnClass(social)}
                   aria-label={social}
                 >
-                  {social === 'github' && <Github size={18} strokeWidth={1.5} />}
-                  {social === 'linkedin' && <Linkedin size={18} strokeWidth={1.5} />}
-                  {social === 'twitter' && <Twitter size={18} strokeWidth={1.5} />}
+                  {social === 'github' && <SiGithub size={18} strokeWidth={1.5} />}
+                  {social === 'linkedin' && <Linkedin size={18} strokeWidth={1.5} className="fill-black" />}
+                  {social === 'twitter' && <SiX size={18} strokeWidth={1.5} />}
                   {social === 'codeforces' && <SiCodeforces size={18} strokeWidth={1.5} />}
                   {social === 'leetcode' && <SiLeetcode size={18} strokeWidth={1.5} />}
                   {social === 'codechef' && <SiCodechef size={18} strokeWidth={1.5} />}
