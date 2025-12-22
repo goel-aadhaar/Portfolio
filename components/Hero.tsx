@@ -21,6 +21,10 @@ const Hero = () => {
     if (url) window.open(url, "_blank", "noopener,noreferrer");
   };
 
+  const downloadCV = (id: string) => {
+
+  }
+
 
   const isButtonActive = (id: string) => activeButtons.includes(id);
 
@@ -89,21 +93,22 @@ const Hero = () => {
           {/* Right Column */}
           <div className="lg:col-span-5 flex flex-col justify-center space-y-6">
             <div className="space-y-3">
-              <button
-                onClick={() => openSocial('email')}
+              <a
+                href="#contact"
                 className={getActionBtnClass('email')}
               >
                 <span>Send Email</span>
                 <Mail size={16} strokeWidth={1.5} />
-              </button>
+              </a>
 
-              <button
-                onClick={() => openSocial('cv')}
+              <a
+                href="/Aadhaar_Goel_CV.pdf"
+                download
                 className={getActionBtnClass('cv')}
               >
                 <span>Download CV</span>
                 <ArrowUpRight size={16} strokeWidth={1.5} />
-              </button>
+              </a>
             </div>
 
             <div className="flex gap-3">
