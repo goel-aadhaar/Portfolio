@@ -7,11 +7,20 @@ import { SiGithub , SiX , SiCodeforces , SiLeetcode , SiCodechef } from "@icons-
 const Hero = () => {
   const [activeButtons, setActiveButtons] = useState<string[]>([]);
 
-  const toggleButtonState = (id: string) => {
-    setActiveButtons((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
+  const openSocial = (id: string) => {
+  const links: Record<string, string> = {
+    linkedin: "https://www.linkedin.com/in/aadhaar-goel/",
+    github: "https://github.com/goel-aadhaar",
+    twitter: "https://x.com/goel_aadhaar",
+    codeforces: "https://codeforces.com/profile/goel_aadhaar",
+    leetcode: "https://leetcode.com/goel_aadhaar/",
+    codechef: "https://www.codechef.com/users/goel_aadhaar",
   };
+
+  const url = links[id];
+    if (url) window.open(url, "_blank", "noopener,noreferrer");
+  };
+
 
   const isButtonActive = (id: string) => activeButtons.includes(id);
 
@@ -81,7 +90,7 @@ const Hero = () => {
           <div className="lg:col-span-5 flex flex-col justify-center space-y-6">
             <div className="space-y-3">
               <button
-                onClick={() => toggleButtonState('email')}
+                onClick={() => openSocial('email')}
                 className={getActionBtnClass('email')}
               >
                 <span>Send Email</span>
@@ -89,7 +98,7 @@ const Hero = () => {
               </button>
 
               <button
-                onClick={() => toggleButtonState('cv')}
+                onClick={() => openSocial('cv')}
                 className={getActionBtnClass('cv')}
               >
                 <span>Download CV</span>
@@ -101,7 +110,7 @@ const Hero = () => {
               {['github', 'linkedin', 'twitter' , 'codeforces' , 'leetcode' , 'codechef'].map((social) => (
                 <button
                   key={social}
-                  onClick={() => toggleButtonState(social)}
+                  onClick={() => openSocial(social)}
                   className={getSocialBtnClass(social)}
                   aria-label={social}
                 >
