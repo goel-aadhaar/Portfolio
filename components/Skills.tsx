@@ -25,7 +25,7 @@ const Skills = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
         
         <div className="border-t border-gray-800 pt-8 mb-12">
-          <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">
+          <span className="text-xl font-medium text-gray-400 uppercase tracking-widest">
             (04) Skills & Technologies
           </span>
         </div>
