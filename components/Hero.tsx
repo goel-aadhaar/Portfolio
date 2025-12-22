@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { MapPin, Mail, ArrowUpRight, Github, Linkedin, Twitter } from 'lucide-react';
+import { SiCodeforces , SiLeetcode , SiCodechef } from "@icons-pack/react-simple-icons";
 
 const Hero = () => {
   const [activeButtons, setActiveButtons] = useState<string[]>([]);
@@ -97,7 +98,7 @@ const Hero = () => {
             </div>
 
             <div className="flex gap-3">
-              {['github', 'linkedin', 'twitter'].map((social) => (
+              {['github', 'linkedin', 'twitter' , 'codeforces' , 'leetcode' , 'codechef'].map((social) => (
                 <button
                   key={social}
                   onClick={() => toggleButtonState(social)}
@@ -107,6 +108,9 @@ const Hero = () => {
                   {social === 'github' && <Github size={18} strokeWidth={1.5} />}
                   {social === 'linkedin' && <Linkedin size={18} strokeWidth={1.5} />}
                   {social === 'twitter' && <Twitter size={18} strokeWidth={1.5} />}
+                  {social === 'codeforces' && <SiCodeforces size={18} strokeWidth={1.5} />}
+                  {social === 'leetcode' && <SiLeetcode size={18} strokeWidth={1.5} />}
+                  {social === 'codechef' && <SiCodechef size={18} strokeWidth={1.5} />}
                 </button>
               ))}
             </div>
