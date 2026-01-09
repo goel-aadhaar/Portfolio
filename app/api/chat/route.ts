@@ -11,9 +11,11 @@ export async function POST(req: Request) {
     if (!message) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
     }
-
+    console.log('Received message:', message);
+    
     // Call the helper function from lib/gemini.ts
     const responseText = await askGemini(message);
+    console.log('Received response:', responseText);
 
     return NextResponse.json({ text: responseText });
 
