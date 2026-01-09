@@ -7,7 +7,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
   // We use the model supported in this environment context
-  model: "gemini-2.5-flash-preview-09-2025", 
+  model: "gemini-1.5-flash", 
   
   // System instructions (Context)
 systemInstruction: `
