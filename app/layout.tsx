@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { myFont } from "./font";
 import "./globals.css";
+import Chatbot from "@/components/Chatbot";
 
 export const metadata: Metadata = {
   title: "Aadhaar Goel | Portfolio",
@@ -30,8 +31,8 @@ export default function RootLayout({
             />
         </head>
       <body
-        className={`${myFont.className} antialiased bg-stone-50 text-stone-900`}
-      >
+        className={`${myFont.className} antialiased bg-stone-50 text-stone-900`}>
+          <Chatbot />
         {children}
       </body>
     </html>
