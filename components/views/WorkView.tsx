@@ -10,7 +10,6 @@ const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string
   FinTech:     { bg: "rgba(255,161,22,0.1)",  text: "#FFA116", border: "rgba(255,161,22,0.2)" },
   "E-Commerce":{ bg: "rgba(167,139,250,0.1)", text: "#a78bfa", border: "rgba(167,139,250,0.2)" },
   EdTech:      { bg: "rgba(34,197,94,0.1)",   text: "#22C55E", border: "rgba(34,197,94,0.2)" },
-  "Fleet Tech":{ bg: "rgba(91,192,235,0.1)",  text: "#5BC0EB", border: "rgba(91,192,235,0.2)" },
 };
 
 const CARD_PATTERNS = [

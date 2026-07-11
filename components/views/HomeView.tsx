@@ -137,9 +137,10 @@ const HOW_ICONS = [Search, PenTool, Rocket, FileText];
 
 const SKILL_GROUPS = [
   { label: "Languages",     color: "#FF4500", items: ["TypeScript", "Java", "C++", "SQL", "Node.js"] },
-  { label: "Frameworks",    color: "#a78bfa", items: ["Spring Boot", "Express.js", "Prisma", "BullMQ", "gRPC", "REST"] },
+  { label: "Frameworks",    color: "#a78bfa", items: ["Spring Boot", "NestJS", "Express.js", "Prisma", "BullMQ", "gRPC", "REST"] },
   { label: "Databases",     color: "#FFA116", items: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka"] },
   { label: "Infrastructure",color: "#22C55E", items: ["Docker", "AWS", "Git", "JWT / RBAC", "Swagger"] },
+  { label: "AI & Voice",    color: "#5BC0EB", items: ["LLMs", "RAG", "AI Voice Bots", "TTS", "STT"] },
 ];
 
 function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {

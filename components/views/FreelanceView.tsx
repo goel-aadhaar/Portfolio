@@ -35,14 +35,14 @@ const SERVICES = [
   {
     icon: Wrench,
     title: "Backend API Development",
-    description: "REST and gRPC APIs in Node.js or Spring Boot. Typed, documented, and production-ready from day one.",
-    tags: ["Node.js", "Spring Boot", "TypeScript", "Swagger"],
+    description: "REST and gRPC APIs in NestJS, Node.js, or Spring Boot. Typed, documented, and production-ready from day one.",
+    tags: ["NestJS", "Node.js", "Spring Boot", "Swagger"],
   },
   {
     icon: Bot,
-    title: "AI Chatbots & Integrations",
-    description: "Custom AI chatbots powered by LLMs, integrated into your product or website. RAG pipelines, knowledge bases, and WhatsApp/web chat interfaces.",
-    tags: ["OpenAI", "Claude API", "LangChain", "RAG"],
+    title: "AI Voice Bots & Chatbots",
+    description: "Custom AI voice bots and chatbots powered by LLMs — real-time speech-to-text and text-to-speech, RAG pipelines, knowledge bases, and WhatsApp/web/voice interfaces.",
+    tags: ["LLMs", "RAG", "TTS", "STT", "Voice AI"],
   },
   {
     icon: BrainCircuit,
@@ -92,13 +92,6 @@ const ENGAGEMENTS = [
     color: "#22C55E",
   },
   {
-    client: "E-Drives",
-    category: "Fleet Tech",
-    result: "Fleet management system with vehicle swap state machine and partial payment engine",
-    metric: "15% fewer failures",
-    color: "#5BC0EB",
-  },
-  {
     client: "Sahi Loan",
     category: "FinTech",
     result: "Loan origination backend with automated eligibility engine and Razorpay disbursement",
@@ -124,7 +117,6 @@ const ENGAGEMENTS = [
 const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string }> = {
   EdTech:      { bg: "rgba(34,197,94,0.1)",   text: "#22C55E", border: "rgba(34,197,94,0.2)" },
   FinTech:     { bg: "rgba(255,161,22,0.1)",  text: "#FFA116", border: "rgba(255,161,22,0.2)" },
-  "Fleet Tech":{ bg: "rgba(91,192,235,0.1)",  text: "#5BC0EB", border: "rgba(91,192,235,0.2)" },
 };
 
 export function FreelanceView({ onNavigate: _ }: { onNavigate: (v: View) => void }) {

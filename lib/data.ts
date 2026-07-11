@@ -127,24 +127,24 @@ export const PROJECTS = [
   },
   {
     id: "06",
-    image: "/projects/e-drives-fleet.jpg",
-    title: "Fleet Management System — E-Drives",
-    category: "Fleet Tech",
+    image: "",
+    title: "Computer-Based Examination Platform",
+    category: "EdTech",
     description:
-      "Re-engineered the vehicle swap and booking lifecycle state machine for a fleet management product. Built a partial payment engine and automated financial reporting pipeline with real-time dashboards.",
-    tech: ["Node.js", "PostgreSQL", "Redis", "REST API"],
-    impact: "15% fewer booking failures",
-    impactDetail: "20% higher payment completion rate",
-    users: "500+",
-    usersLabel: "Bookings",
-    metric: "20% higher",
-    metricLabel: "Payment completion",
+      "A high-availability online examination platform serving 400+ concurrent test-takers. Built with a NestJS backend and Next.js frontend on a full AWS stack, with an AI result engine, AI-generated progress reports, and real-time performance dashboards.",
+    tech: ["NestJS", "Next.js", "AWS EC2", "RDS", "S3", "CloudFront", "Amplify", "SES"],
+    impact: "400+ concurrent users",
+    impactDetail: "AI result engine + performance dashboards",
+    users: "400+",
+    usersLabel: "Concurrent",
+    metric: "AI-graded",
+    metricLabel: "Result engine",
     features: [
-      "Vehicle swap & booking lifecycle state machine",
-      "Partial payment engine with real-time dashboards",
+      "Real-time exam delivery for 400+ concurrent users on AWS EC2, RDS, S3, and CloudFront",
+      "AI result engine and AI-generated progress reports with live performance dashboards",
     ],
     link: "https://github.com/goel-aadhaar",
-    featured: false,
+    featured: true,
   },
 ];
 
@@ -195,40 +195,26 @@ export const EXPERIENCE = [
       "Curated structured problem roadmaps tailored to individual student skill levels",
     ],
   },
-  {
-    company: "E-Drives",
-    logo: "/logos/e-drives.png",
-    role: "Freelance Backend Engineer",
-    period: "2024",
-    location: "Remote",
-    current: false,
-    description:
-      "Re-engineered the core booking and payment systems for a fleet management platform, improving reliability and automating financial workflows.",
-    bullets: [
-      "15% decrease in booking failure rates by re-engineering the vehicle swap and booking lifecycle state machine",
-      "20% boost in payment completion via a partial payment engine and flexible billing architecture",
-      "Automated financial reporting, reducing manual accounting effort by 15 hours/week via real-time dashboards",
-    ],
-  },
 ];
 
 export const SKILLS = {
   languages: ["TypeScript", "Java", "C++", "SQL", "Node.js"],
-  frameworks: ["Spring Boot", "Express.js", "Prisma", "BullMQ", "gRPC", "REST"],
+  frameworks: ["Spring Boot", "NestJS", "Express.js", "Prisma", "BullMQ", "gRPC", "REST"],
   databases: ["PostgreSQL", "MongoDB", "Redis", "Kafka"],
   cloud: ["AWS", "Docker", "Git", "JWT / RBAC", "Swagger"],
+  ai: ["LLMs", "RAG", "AI Voice Bots", "TTS", "STT"],
   tools: ["DSA & Algorithms", "OS & Networks", "CQRS", "Microservices", "Mixpanel"],
 };
 
 export const MARQUEE_ITEMS = [
-  "TypeScript", "Java", "Node.js", "Spring Boot", "C++",
+  "TypeScript", "Java", "Node.js", "NestJS", "Spring Boot", "C++",
   "PostgreSQL", "MongoDB", "Redis", "Kafka",
   "Docker", "AWS", "gRPC", "Prisma", "BullMQ",
-  "JWT", "RBAC", "CQRS", "Microservices",
+  "JWT", "RBAC", "CQRS", "Microservices", "LLMs", "RAG",
 ];
 
 export const MARQUEE_ROW_1 = [
-  "TypeScript", "Java", "Node.js", "Spring Boot", "Express.js", "Prisma", "BullMQ", "gRPC", "REST APIs",
+  "TypeScript", "Java", "Node.js", "NestJS", "Spring Boot", "Express.js", "Prisma", "BullMQ", "gRPC", "REST APIs",
 ];
 
 export const MARQUEE_ROW_2 = [
@@ -236,7 +222,7 @@ export const MARQUEE_ROW_2 = [
 ];
 
 export const MARQUEE_ROW_3 = [
-  "CQRS", "Microservices", "JWT", "RBAC", "Event-Driven", "DSA", "System Design", "Networking", "OS Fundamentals",
+  "CQRS", "Microservices", "LLMs", "RAG", "AI Voice Bots", "TTS / STT", "Event-Driven", "System Design", "DSA",
 ];
 
 export const BLOGS = [
@@ -338,7 +324,6 @@ export const FREELANCE = {
     "PW Skills Portal",
     "Sahi Loan",
     "Loopskills",
-    "E-Drives",
     "Summentors PRO",
   ],
   highlights: [
@@ -379,7 +364,7 @@ export const FAQS = [
   },
   {
     question: "Are you open to freelance or contract work?",
-    answer: "Yes. I take on select freelance projects where I can own the backend architecture end-to-end. Past clients include PWLeapx, E-Drives, and Summentors PRO across edtech, fintech, and fleet tech.",
+    answer: "Yes. I take on select freelance projects where I can own the backend architecture end-to-end. Past clients include PWLeapx and Summentors PRO across edtech and fintech.",
   },
   {
     question: "How do you approach performance issues?",
