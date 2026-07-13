@@ -48,57 +48,7 @@ interface LCData {
   ranking: number | null;
 }
 
-function seededRand(seed: number) {
-  const x = Math.sin(seed + 1) * 10000;
-  return x - Math.floor(x);
-}
-
 const WEEKS = 53; // 53 columns = full 365-day year, ending on the current week
-
-function generateHeatmap() {
-  const weeks = WEEKS;
-  const cells: number[][] = [];
-
-  for (let w = 0; w < weeks; w++) {
-    const row: number[] = [];
-    for (let d = 0; d < 7; d++) {
-      const seed = w * 7 + d;
-      const isWeekend = d === 0 || d === 6;
-      let val = 0;
-
-      if (w >= 44) {
-        if (!isWeekend) {
-          const s = seededRand(seed + 300);
-          val = s < 0.20 ? 1 : s < 0.50 ? 2 : s < 0.78 ? 3 : 4;
-        } else {
-          val = seededRand(seed + 400) > 0.62 ? 1 : 0;
-        }
-      } else if (w >= 34) {
-        if (!isWeekend) {
-          const s = seededRand(seed + 150);
-          const recency = (w - 34) / 10;
-          val = s < (0.25 - recency * 0.1) ? 0 : s < 0.55 ? 1 : s < 0.78 ? 2 : 3;
-        } else {
-          val = seededRand(seed + 250) > 0.72 ? 1 : 0;
-        }
-      } else {
-        const recency = w / weeks;
-        const rand = seededRand(seed);
-        const prob = 0.12 + recency * 0.46;
-        if (rand < prob) {
-          const s = seededRand(seed + 50);
-          val = Math.min(4, Math.floor(1 + s * 3.5 * (0.2 + recency * 0.8)));
-          if (isWeekend) val = Math.min(1, val);
-        }
-      }
-
-      row.push(val);
-    }
-    cells.push(row);
-  }
-
-  return cells;
-}
 
 // Sunday that starts the leftmost column: 52 weeks before the week containing today.
 // Anchoring to today (not the first API row) keeps the most recent days — including
@@ -113,33 +63,68 @@ function gridStartSunday(): Date {
   return start;
 }
 
-function buildCellsFromContributions(contributions: ContributionDay[]): number[][] {
-  const grid: number[][] = Array.from({ length: WEEKS }, () => Array(7).fill(0));
-  if (!contributions.length) return grid;
+interface HeatCell {
+  date: Date;
+  count: number;
+  level: number;
+  future: boolean;
+}
 
-  const startSunday = gridStartSunday();
+function isoDate(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
 
-  contributions.forEach(({ date, level }) => {
-    const d = new Date(date + "T00:00:00");
-    const diffDays = Math.round((d.getTime() - startSunday.getTime()) / 86_400_000);
-    const weekIndex = Math.floor(diffDays / 7);
-    const dayIndex = d.getDay();
-    if (weekIndex >= 0 && weekIndex < WEEKS) grid[weekIndex][dayIndex] = level;
-  });
+function buildGrid(contributions: ContributionDay[] | null): HeatCell[][] {
+  const start = gridStartSunday();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
+  const byDate = new Map<string, ContributionDay>();
+  contributions?.forEach((c) => byDate.set(c.date, c));
+
+  const grid: HeatCell[][] = [];
+  for (let w = 0; w < WEEKS; w++) {
+    const col: HeatCell[] = [];
+    for (let d = 0; d < 7; d++) {
+      const date = new Date(start);
+      date.setDate(start.getDate() + w * 7 + d);
+      const rec = byDate.get(isoDate(date));
+      col.push({
+        date,
+        count: rec?.count ?? 0,
+        level: rec?.level ?? 0,
+        future: date.getTime() > today.getTime(),
+      });
+    }
+    grid.push(col);
+  }
   return grid;
 }
 
+// Longest run of consecutive days with at least one contribution.
+function longestStreak(contributions: ContributionDay[]): number {
+  let best = 0;
+  let run = 0;
+  [...contributions]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .forEach(({ count }) => {
+      run = count > 0 ? run + 1 : 0;
+      if (run > best) best = run;
+    });
+  return best;
+}
+
+// Opaque colours — the page has animated background orbs behind this grid, and
+// translucent cells let that colour bleed through and wash the heatmap out.
 const HEATMAP_COLORS = [
-  "rgba(255,255,255,0.06)",
-  "rgba(34,197,94,0.2)",
-  "rgba(34,197,94,0.45)",
-  "rgba(34,197,94,0.7)",
+  "#26262B",
+  "#0E4429",
+  "#15803D",
   "#22C55E",
+  "#86EFAC",
 ];
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-const DAYS = ["", "Mon", "", "Wed", "", "Fri", ""];
 
 const CF_MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -286,11 +271,18 @@ export function CodeView({ onNavigate: _ }: { onNavigate: (v: View) => void }) {
   const [github, setGithub] = useState<GithubUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [contributions, setContributions] = useState<ContributionDay[] | null>(null);
+  const [contribFailed, setContribFailed] = useState(false);
   const [realTotal, setRealTotal] = useState<number | null>(null);
   const [cfData, setCfData] = useState<CFData | null>(null);
   const [lcData, setLcData] = useState<LCData | null>(null);
 
-  const cells = contributions ? buildCellsFromContributions(contributions) : generateHeatmap();
+  const grid = buildGrid(contributions);
+  const activeDays = contributions?.filter((c) => c.count > 0).length ?? 0;
+  const maxStreak = contributions ? longestStreak(contributions) : 0;
+
+  // True when this column starts a new month — used to gap and label month blocks.
+  const startsMonth = (w: number) =>
+    w === 0 || grid[w][0].date.getMonth() !== grid[w - 1][0].date.getMonth();
 
   useEffect(() => {
     fetch("https://api.github.com/users/goel-aadhaar")
@@ -305,7 +297,7 @@ export function CodeView({ onNavigate: _ }: { onNavigate: (v: View) => void }) {
         setContributions(data.contributions);
         setRealTotal(data.total?.lastYear ?? null);
       })
-      .catch(() => {});
+      .catch(() => setContribFailed(true));
 
     fetch("/api/cf")
       .then((r) => r.json())
@@ -358,19 +350,6 @@ export function CodeView({ onNavigate: _ }: { onNavigate: (v: View) => void }) {
     ],
   };
 
-  // Walk the same 53 columns the grid uses; tag the first column of each month.
-  const gridStart = gridStartSunday();
-  const monthLabels: { label: string; col: number }[] = [];
-  let lastMonth = -1;
-  for (let w = 0; w < WEEKS; w++) {
-    const colDate = new Date(gridStart);
-    colDate.setDate(gridStart.getDate() + w * 7);
-    const mo = colDate.getMonth();
-    if (mo !== lastMonth) {
-      monthLabels.push({ label: MONTHS[mo], col: w });
-      lastMonth = mo;
-    }
-  }
 
   return (
     <div>
@@ -484,44 +463,125 @@ export function CodeView({ onNavigate: _ }: { onNavigate: (v: View) => void }) {
               ))}
             </div>
 
-            {/* Heatmap */}
-            <div style={{ fontFamily: "var(--l-font-mono)", fontSize: 11, color: "var(--l-text-muted)", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 12, textAlign: "center" }}>
-              Contribution Activity
-            </div>
-            <div style={{ overflowX: "auto" }}>
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <div style={{ display: "flex", marginBottom: 4, marginLeft: 28 }}>
-                  {Array.from({ length: WEEKS }, (_, w) => {
-                    const ml = monthLabels.find((m) => m.col === w);
-                    return (
-                      <div key={w} style={{ width: 14, marginRight: 2, fontFamily: "var(--l-font-mono)", fontSize: 9, color: "var(--l-text-muted)", whiteSpace: "nowrap" }}>
-                        {ml?.label ?? ""}
-                      </div>
-                    );
-                  })}
+            {/* Heatmap — opaque panel so the page's background orbs don't wash it out */}
+            <div
+              style={{
+                background: "#0B0B0D",
+                border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: 14,
+                padding: "20px 22px",
+              }}
+            >
+              {/* Header: total + streak stats */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: 12,
+                  marginBottom: 20,
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "baseline", gap: 7 }}>
+                  <span style={{ fontFamily: "var(--l-font-heading)", fontSize: 21, fontWeight: 700, color: "var(--l-text)", letterSpacing: "-0.5px" }}>
+                    {contributions ? realTotal ?? 0 : "—"}
+                  </span>
+                  <span style={{ fontSize: 13.5, color: "var(--l-text-soft)" }}>
+                    contributions in the past one year
+                  </span>
                 </div>
-                <div style={{ display: "flex" }}>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 2, marginRight: 4 }}>
-                    {DAYS.map((d, i) => (
-                      <div key={i} style={{ height: 14, fontFamily: "var(--l-font-mono)", fontSize: 9, color: "var(--l-text-muted)", lineHeight: "14px" }}>{d}</div>
-                    ))}
-                  </div>
-                  {cells.map((week, w) => (
-                    <div key={w} style={{ display: "flex", flexDirection: "column", gap: 2, marginRight: 2 }}>
-                      {week.map((val, d) => (
-                        <div key={d} className="heatmap-cell" title={`${val} contributions`} style={{ background: HEATMAP_COLORS[val] }} />
-                      ))}
-                    </div>
-                  ))}
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 10 }}>
-                  <span style={{ fontFamily: "var(--l-font-mono)", fontSize: 9, color: "var(--l-text-muted)" }}>Less</span>
-                  {HEATMAP_COLORS.map((c, i) => (
-                    <div key={i} style={{ width: 12, height: 12, borderRadius: 3, background: c }} />
-                  ))}
-                  <span style={{ fontFamily: "var(--l-font-mono)", fontSize: 9, color: "var(--l-text-muted)" }}>More</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
+                  <span style={{ fontFamily: "var(--l-font-mono)", fontSize: 11, color: "var(--l-text-muted)" }}>
+                    Total active days:{" "}
+                    <span style={{ color: "var(--l-text)", fontWeight: 600 }}>{activeDays}</span>
+                  </span>
+                  <span style={{ fontFamily: "var(--l-font-mono)", fontSize: 11, color: "var(--l-text-muted)" }}>
+                    Max streak:{" "}
+                    <span style={{ color: "var(--l-text)", fontWeight: 600 }}>{maxStreak}</span>
+                  </span>
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      height: 26,
+                      padding: "0 12px",
+                      borderRadius: 7,
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.09)",
+                      fontFamily: "var(--l-font-mono)",
+                      fontSize: 11,
+                      color: "var(--l-text-soft)",
+                    }}
+                  >
+                    Past year
+                  </span>
                 </div>
               </div>
+
+              {/* Grid — 7 day-rows, one column per week, gapped between months */}
+              <div style={{ overflowX: "auto" }}>
+                <div style={{ display: "inline-flex", flexDirection: "column" }}>
+                  <div style={{ display: "flex" }}>
+                    {grid.map((col, w) => (
+                      <div
+                        key={w}
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 3,
+                          marginRight: 3,
+                          marginLeft: w > 0 && startsMonth(w) ? 7 : 0,
+                        }}
+                      >
+                        {col.map((cell, d) => (
+                          <div
+                            key={d}
+                            className="heatmap-cell"
+                            title={
+                              cell.future
+                                ? ""
+                                : `${cell.count} contribution${cell.count === 1 ? "" : "s"} on ${cell.date.toDateString().slice(4)}`
+                            }
+                            style={{
+                              background: HEATMAP_COLORS[cell.level],
+                              visibility: cell.future ? "hidden" : "visible",
+                            }}
+                          />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Month labels, below the grid */}
+                  <div style={{ display: "flex", marginTop: 9 }}>
+                    {grid.map((col, w) => (
+                      <div
+                        key={w}
+                        style={{
+                          width: 11,
+                          marginRight: 3,
+                          marginLeft: w > 0 && startsMonth(w) ? 7 : 0,
+                          fontFamily: "var(--l-font-mono)",
+                          fontSize: 10,
+                          color: "var(--l-text-muted)",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {startsMonth(w) ? MONTHS[col[0].date.getMonth()] : ""}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {!contributions && (
+                <div style={{ marginTop: 14, fontFamily: "var(--l-font-mono)", fontSize: 10.5, color: "var(--l-text-muted)" }}>
+                  {contribFailed
+                    ? "Couldn’t load GitHub activity right now — see github.com/goel-aadhaar"
+                    : "Loading GitHub activity…"}
+                </div>
+              )}
             </div>
           </motion.div>
 
