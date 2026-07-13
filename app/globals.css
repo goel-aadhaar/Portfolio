@@ -351,6 +351,27 @@ body {
   transform: perspective(900px) rotateY(-8deg) rotateX(2deg);
 }
 
+/* ── Portrait ── */
+.portrait-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #0a0a0a;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.03),
+    0 40px 80px -20px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  /* Mirrors the phone's tilt in the opposite direction so the pair reads as one composition */
+  transform: perspective(900px) rotateY(10deg) rotateX(2deg);
+  transition: transform 400ms var(--l-ease);
+}
+
+.portrait-frame:hover {
+  transform: perspective(900px) rotateY(4deg) rotateX(1deg);
+}
+
 /* ── Heatmap ── */
 .heatmap-cell {
   width: 11px;
@@ -374,8 +395,29 @@ body {
   .hero-grid {
     grid-template-columns: 1fr !important;
   }
-  .hero-phone {
-    display: none;
+  /* On mobile the phone mockup and floating cards are dropped, but the portrait
+     stays — a recruiter on a phone should still see who they're hiring. */
+  .hero-visual {
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .hero-phone-wrap,
+  .hero-float {
+    display: none !important;
+  }
+  .hero-photo {
+    position: static !important;
+    width: 220px !important;
+    height: 280px !important;
+  }
+  .portrait-frame {
+    transform: none;
+  }
+  .portrait-frame:hover {
+    transform: none;
   }
   .bento-grid {
     grid-template-columns: 1fr !important;

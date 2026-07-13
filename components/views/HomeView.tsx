@@ -235,13 +235,42 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
               </motion.div>
             </div>
 
-            {/* Right: phone + floating cards */}
-            <div className="hero-phone" style={{ position: "relative", width: 360, height: 540, flexShrink: 0 }}>
-              <FloatingCard label="Currently at" value="Physics Wallah" sub="Backend Dev · Bengaluru" accentColor="rgba(255,69,0,0.25)" dotColor="#FF4500" delay={0.7} floatDelay={0} style={{ top: 10, left: 0 }} />
-              <FloatingCard label="LeetCode Max Rating" value="1837" sub="Top algorithmic problem solver" accentColor="rgba(255,161,22,0.25)" dotColor="#FFA116" delay={0.9} floatDelay={1.5} style={{ right: 0, top: "38%" }} />
-              <FloatingCard label="IIT Guwahati" value="8.4 CGPA" sub="B.Sc. (Hons) DS & AI · 2027" accentColor="rgba(34,197,94,0.2)" dotColor="#22C55E" delay={1.1} floatDelay={0.8} style={{ bottom: 20, left: 10 }} />
+            {/* Right: portrait + phone + floating cards */}
+            <div className="hero-visual" style={{ position: "relative", width: 460, height: 580, flexShrink: 0 }}>
+              <div className="hero-float">
+                <FloatingCard label="Currently at" value="Physics Wallah" sub="Backend Dev · Bengaluru" accentColor="rgba(255,69,0,0.25)" dotColor="#FF4500" delay={0.7} floatDelay={0} style={{ top: 8, left: 0 }} />
+                <FloatingCard label="LeetCode Max Rating" value="1837" sub="Top algorithmic problem solver" accentColor="rgba(255,161,22,0.25)" dotColor="#FFA116" delay={0.9} floatDelay={1.5} style={{ right: 0, top: 210 }} />
+                <FloatingCard label="IIT Guwahati" value="8.4 CGPA" sub="B.Sc. (Hons) DS & AI · 2027" accentColor="rgba(34,197,94,0.2)" dotColor="#22C55E" delay={1.1} floatDelay={0.8} style={{ bottom: 26, right: 0 }} />
+              </div>
 
-              <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }} style={{ position: "absolute", left: 80, top: 55, zIndex: 10 }}>
+              {/* Portrait */}
+              <motion.div
+                className="hero-photo"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                style={{ position: "absolute", left: 0, bottom: 8, width: 232, height: 300, zIndex: 12 }}
+              >
+                <div className="portrait-frame">
+                  <img
+                    src="/image.png"
+                    alt="Aadhaar Goel"
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
+                  />
+                  {/* Vignette so the photo sits inside the dark theme instead of on top of it */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      pointerEvents: "none",
+                      background:
+                        "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 100%), radial-gradient(ellipse 90% 70% at 50% 40%, rgba(255,69,0,0.06), transparent 70%)",
+                    }}
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div className="hero-phone-wrap" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }} style={{ position: "absolute", right: 6, top: 0, zIndex: 10 }}>
                 <div className="phone-mockup">
                   <div style={{ height: 44, display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid rgba(255,255,255,0.06)", paddingTop: 8 }}>
                     <div style={{ width: 80, height: 6, borderRadius: 9999, background: "rgba(255,255,255,0.1)" }} />
