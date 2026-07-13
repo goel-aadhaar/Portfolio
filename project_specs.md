@@ -50,8 +50,11 @@ Long-form blog bodies live in `lib/blog-content.ts`.
   (AWS, Docker, Linux) as prominently as the API/services work
 - Availability copy must say **internships + full-time from 2027** — never "senior/staff roles"
 - Every project should carry a **concrete metric** (latency, concurrency, throughput, scale)
-- **Never claim a skill with no evidence** in the projects/experience data (e.g. no Kubernetes,
-  no Terraform) — it will not survive an interview screen
+- **Never claim a skill with no evidence** on the resume (`public/resume.pdf`) — it will not
+  survive an interview screen. The resume is the source of truth for skills and facts;
+  when the two disagree, the resume wins.
+- Confirmed by the resume and safe to feature: Kubernetes, Prometheus, Grafana, AWS Lambda,
+  Python, React, AI proctoring/evaluation. Not evidenced: Terraform, CI/CD tooling by name.
 
 ## Third-party services
 

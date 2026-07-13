@@ -124,7 +124,7 @@ function FloatingCard({
 
 const bentoItems = [
   { icon: Server, title: "Systems Architecture", body: "Modular monoliths and microservices in Node.js, NestJS, Spring Boot, and TypeScript — built for maintainability and production scale.", wide: true, accent: "rgba(255,69,0,0.07)" },
-  { icon: Cloud, title: "Cloud & Infrastructure", body: "Production deployments on AWS — EC2, RDS, S3, CloudFront, Amplify, and SES. Dockerised services with multi-stage builds, Docker Compose, and health-checked releases.", wide: false, accent: "rgba(34,197,94,0.07)" },
+  { icon: Cloud, title: "Cloud & Infrastructure", body: "Production deployments on AWS — EC2, Lambda, RDS, S3, SES, Amplify. Services containerised with Docker, orchestrated on Kubernetes, and monitored with Prometheus and Grafana for health and performance.", wide: false, accent: "rgba(34,197,94,0.07)" },
   { icon: Code2, title: "DSA & Problem Solving", body: "1500+ problems solved. LeetCode max 1837 · Codeforces max 1409 (Specialist).", wide: false, accent: "rgba(75,0,130,0.1)" },
   { icon: Zap, title: "Performance", body: "Redis-backed BullMQ queues, Kafka event streams, ORM-level query optimisation. 40% latency reduction at Physics Wallah.", wide: false, accent: "rgba(255,69,0,0.05)" },
   { icon: Shield, title: "Auth & Security", body: "Centralised JWT + RBAC middleware, API gateway patterns, secure multi-tenant system design.", wide: false, accent: "rgba(34,197,94,0.05)" },
@@ -134,12 +134,13 @@ const bentoItems = [
 const HOW_ICONS = [Search, PenTool, Rocket, FileText];
 
 const SKILL_GROUPS = [
-  { label: "Languages",        color: "#FF4500", items: ["TypeScript", "Java", "C++", "SQL", "Node.js"] },
-  { label: "Frameworks",       color: "#a78bfa", items: ["Spring Boot", "NestJS", "Express.js", "Prisma", "BullMQ", "gRPC", "REST"] },
+  { label: "Languages",        color: "#FF4500", items: ["TypeScript", "JavaScript", "Java", "Python", "C++", "SQL"] },
+  { label: "Frameworks",       color: "#a78bfa", items: ["Node.js", "NestJS", "Express.js", "Spring Boot", "React", "Prisma", "BullMQ", "gRPC"] },
   { label: "Databases",        color: "#FFA116", items: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka"] },
-  { label: "Cloud & DevOps",   color: "#22C55E", items: ["AWS EC2", "RDS", "S3", "CloudFront", "Amplify", "SES", "Docker", "Docker Compose", "Linux", "CI/CD", "Vercel"] },
-  { label: "Security & Tooling", color: "#FF8C00", items: ["JWT / RBAC", "OAuth / OTP", "Swagger", "Git"] },
-  { label: "AI & Voice",       color: "#5BC0EB", items: ["LLMs", "RAG", "AI Voice Bots", "TTS", "STT"] },
+  { label: "Cloud & DevOps",   color: "#22C55E", items: ["Docker", "Kubernetes", "AWS EC2", "Lambda", "RDS", "S3", "SES", "Amplify", "Prometheus", "Grafana", "Linux", "Git"] },
+  { label: "AI & ML",          color: "#5BC0EB", items: ["LLMs", "RAG", "AI Agents", "AI Proctoring", "AI Evaluation", "AI Voice Bots", "TTS", "STT"] },
+  { label: "Security & Auth",  color: "#FF8C00", items: ["JWT / RBAC", "OAuth / OTP", "Swagger"] },
+  { label: "Core CS",          color: "#e879f9", items: ["System Design", "Distributed Systems", "Operating Systems", "DBMS", "Computer Networks", "DSA"] },
 ];
 
 export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
@@ -184,7 +185,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
                   <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontFamily: "var(--l-font-mono)", fontSize: 12, color: "var(--l-text-muted)", letterSpacing: "0.3px" }}>
                     <GraduationCap size={13} style={{ color: "#22C55E" }} />
                     <span style={{ color: "#22C55E" }}>IIT Guwahati</span>
-                    <span>· CGPA 8.3 · Class of 2027</span>
+                    <span>· CGPA 8.4 · Class of 2027</span>
                   </span>
                   <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontFamily: "var(--l-font-mono)", fontSize: 12, color: "var(--l-text-muted)" }}>
                     <MapPin size={12} style={{ color: "var(--l-primary)" }} />
@@ -236,7 +237,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
             <div className="hero-phone" style={{ position: "relative", width: 360, height: 540, flexShrink: 0 }}>
               <FloatingCard label="Currently at" value="Physics Wallah" sub="Backend Dev · Bengaluru" accentColor="rgba(255,69,0,0.25)" dotColor="#FF4500" delay={0.7} floatDelay={0} style={{ top: 10, left: 0 }} />
               <FloatingCard label="LeetCode Max Rating" value="1837" sub="Top algorithmic problem solver" accentColor="rgba(255,161,22,0.25)" dotColor="#FFA116" delay={0.9} floatDelay={1.5} style={{ right: 0, top: "38%" }} />
-              <FloatingCard label="IIT Guwahati" value="8.3 CGPA" sub="B.S. DS & AI · Class of 2027" accentColor="rgba(34,197,94,0.2)" dotColor="#22C55E" delay={1.1} floatDelay={0.8} style={{ bottom: 20, left: 10 }} />
+              <FloatingCard label="IIT Guwahati" value="8.4 CGPA" sub="B.Sc. (Hons) DS & AI · 2027" accentColor="rgba(34,197,94,0.2)" dotColor="#22C55E" delay={1.1} floatDelay={0.8} style={{ bottom: 20, left: 10 }} />
 
               <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }} style={{ position: "absolute", left: 80, top: 55, zIndex: 10 }}>
                 <div className="phone-mockup">

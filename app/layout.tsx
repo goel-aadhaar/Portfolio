@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Aadhaar Goel — Software Engineer | IIT Guwahati",
   description:
-    "Software engineer and CS student at IIT Guwahati. Distributed systems, cloud infrastructure, and DevOps — NestJS, Spring Boot, Kafka, Docker, AWS. Open to software, DevOps, and infrastructure internships and full-time roles from 2027.",
+    "Software engineer and CS student at IIT Guwahati. Distributed systems, cloud infrastructure, and DevOps — NestJS, Spring Boot, Kafka, Docker, Kubernetes, AWS, Prometheus, Grafana. Open to software, DevOps, and infrastructure internships and full-time roles from 2027.",
   keywords: [
     "Software Engineer",
     "Software Engineer Intern",
@@ -33,11 +33,15 @@ export const metadata: Metadata = {
     "Site Reliability Engineer",
     "AWS",
     "Docker",
+    "Kubernetes",
+    "Prometheus",
+    "Grafana",
     "Linux",
     "Node.js",
     "NestJS",
     "Spring Boot",
     "Kafka",
+    "Python",
     "IIT Guwahati",
     "Aadhaar Goel",
   ],

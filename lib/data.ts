@@ -15,8 +15,8 @@ export const PERSON = {
 
 export const STATS = [
   { value: "1500+", label: "DSA problems solved" },
-  { value: "8.3", label: "CGPA at IIT Guwahati" },
-  { value: "40%", label: "API latency reduced at PW" },
+  { value: "8.4", label: "CGPA at IIT Guwahati" },
+  { value: "40%", label: "Issue resolution time cut at PW" },
   { value: "6+", label: "Production systems shipped" },
 ];
 
@@ -129,20 +129,21 @@ export const PROJECTS = [
   {
     id: "06",
     image: "",
-    title: "Computer-Based Examination Platform",
+    title: "AI-Powered Multi-Tenant CBT Examination Platform",
     category: "EdTech",
     description:
-      "A high-availability online examination platform serving 400+ concurrent test-takers. Built with a NestJS backend and Next.js frontend on a full AWS stack, with an AI result engine, AI-generated progress reports, and real-time performance dashboards.",
-    tech: ["NestJS", "Next.js", "AWS EC2", "RDS", "S3", "CloudFront", "Amplify", "SES"],
-    impact: "400+ concurrent users",
-    impactDetail: "AI result engine + performance dashboards",
+      "A multi-tenant, NTA-style computer-based testing platform serving 400+ concurrent candidates, with institute-level isolation, RBAC, automated evaluation, and real-time result generation. Containerised with Docker, deployed on Kubernetes, and monitored with Prometheus and Grafana.",
+    tech: ["NestJS", "TypeScript", "PostgreSQL", "Kubernetes", "Docker", "AWS", "Prometheus", "Grafana"],
+    impact: "400+ concurrent candidates",
+    impactDetail: "Multi-tenant, Kubernetes-deployed, fully observable",
     users: "400+",
     usersLabel: "Concurrent",
-    metric: "AI-graded",
-    metricLabel: "Result engine",
+    metric: "Multi-tenant",
+    metricLabel: "Institute isolation",
     features: [
-      "Real-time exam delivery for 400+ concurrent users on AWS EC2, RDS, S3, and CloudFront",
-      "AI result engine and AI-generated progress reports with live performance dashboards",
+      "AI-assisted proctoring, candidate evaluation, and automated performance reports",
+      "Server-controlled timers, auto-save, session recovery, and audit logging",
+      "Kubernetes deployment with Prometheus + Grafana observability and health monitoring",
     ],
     link: "https://github.com/goel-aadhaar",
     featured: true,
@@ -166,25 +167,29 @@ export const EXPERIENCE = [
     ],
     highlights: [
       "Hardened system security with a centralised RBAC authentication middleware across all backend services",
+      "Worked extensively in Linux environments for development, deployment, monitoring, and production troubleshooting",
+      "Collaborated with QA and product teams through release validation and deployment cycles",
     ],
-    stack: ["TypeScript", "Express", "Prisma", "Swagger", "RBAC"],
+    stack: ["TypeScript", "Express.js", "Prisma", "Linux", "Swagger", "RBAC"],
   },
   {
-    company: "Summentor Pro Business Consultant",
+    company: "Summentors PRO",
     logo: "/logos/summentor-pro.png",
-    role: "Tech & Growth Intern",
-    period: "Apr 2026 — Present",
-    location: "Bengaluru · Remote",
+    role: "Tech & Growth Solutions Engineer",
+    period: "Mar 2026 — Present",
+    location: "Remote",
     current: true,
     description:
-      "Driving funnel automation and back-end operations to accelerate growth and streamline data collection pipelines.",
+      "Building analytics and automation infrastructure, and running the production AWS deployments behind it.",
     metrics: [
-      { value: "35%", label: "System throughput", detail: "Redis-backed BullMQ queue for long-running tasks" },
-      { value: "12%", label: "Lead conversion", detail: "Real-time dashboards + Mixpanel funnel tracking" },
-      { value: "20 hrs", label: "Saved per month", detail: "Automated outreach via WhatsApp + Email APIs" },
+      { value: "35%", label: "System throughput", detail: "Redis-backed BullMQ queues and AWS Lambda functions" },
+      { value: "12%", label: "Lead conversion", detail: "Analytics dashboards + Mixpanel funnel tracking" },
+      { value: "20+ hrs", label: "Saved per month", detail: "Automated workflows via WhatsApp APIs and AWS SES" },
     ],
-    highlights: [],
-    stack: ["Node.js", "Redis", "BullMQ", "Mixpanel", "WhatsApp API"],
+    highlights: [
+      "Managed production deployments on AWS EC2 and RDS, and monitored the cloud infrastructure running them",
+    ],
+    stack: ["Node.js", "Redis", "BullMQ", "AWS Lambda", "AWS EC2", "AWS RDS", "AWS SES", "Mixpanel"],
   },
   {
     company: "Skill Turtle",
@@ -207,13 +212,14 @@ export const EXPERIENCE = [
 ];
 
 export const SKILLS = {
-  languages: ["TypeScript", "Java", "C++", "SQL", "Node.js"],
-  frameworks: ["Spring Boot", "NestJS", "Express.js", "Prisma", "BullMQ", "gRPC", "REST"],
+  languages: ["TypeScript", "JavaScript", "Java", "Python", "C++", "SQL"],
+  frameworks: ["Node.js", "NestJS", "Express.js", "Spring Boot", "React", "Prisma", "BullMQ", "gRPC"],
   databases: ["PostgreSQL", "MongoDB", "Redis", "Kafka"],
-  cloud: ["AWS EC2", "RDS", "S3", "CloudFront", "Amplify", "SES", "Docker", "Docker Compose", "Linux", "CI/CD", "Vercel"],
+  cloud: ["Docker", "Kubernetes", "AWS EC2", "Lambda", "RDS", "S3", "SES", "Amplify", "Prometheus", "Grafana", "Linux", "Git"],
   security: ["JWT / RBAC", "OAuth / OTP", "Swagger", "Git"],
-  ai: ["LLMs", "RAG", "AI Voice Bots", "TTS", "STT"],
-  tools: ["DSA & Algorithms", "OS & Networks", "CQRS", "Microservices", "Mixpanel"],
+  ai: ["LLMs", "RAG", "AI Agents", "AI Proctoring", "AI Evaluation", "AI Voice Bots", "TTS", "STT"],
+  coreCs: ["System Design", "Distributed Systems", "Operating Systems", "DBMS", "Computer Networks", "DSA"],
+  tools: ["CQRS", "Microservices", "Mixpanel"],
 };
 
 export const MARQUEE_ITEMS = [
@@ -224,15 +230,15 @@ export const MARQUEE_ITEMS = [
 ];
 
 export const MARQUEE_ROW_1 = [
-  "TypeScript", "Java", "Node.js", "NestJS", "Spring Boot", "Express.js", "Prisma", "BullMQ", "gRPC", "REST APIs",
+  "TypeScript", "JavaScript", "Java", "Python", "Node.js", "NestJS", "Spring Boot", "Express.js", "React", "Prisma", "BullMQ", "gRPC",
 ];
 
 export const MARQUEE_ROW_2 = [
-  "PostgreSQL", "MongoDB", "Redis", "Apache Kafka", "Docker", "AWS", "Linux", "Git", "Swagger",
+  "Docker", "Kubernetes", "AWS", "Lambda", "Prometheus", "Grafana", "Linux", "PostgreSQL", "MongoDB", "Redis", "Apache Kafka", "Git",
 ];
 
 export const MARQUEE_ROW_3 = [
-  "CQRS", "Microservices", "LLMs", "RAG", "AI Voice Bots", "TTS / STT", "Event-Driven", "System Design", "DSA",
+  "System Design", "Distributed Systems", "Microservices", "LLMs", "RAG", "AI Agents", "AI Proctoring", "Event-Driven", "CQRS", "DSA",
 ];
 
 export const BLOGS = [
@@ -384,8 +390,8 @@ export const ACHIEVEMENTS = [
 ];
 
 export const EDUCATION = {
-  degree: "B.S. Data Science & Artificial Intelligence",
+  degree: "B.Sc. (Honours) Data Science & Artificial Intelligence",
   institution: "IIT Guwahati",
-  expected: "2027",
-  cgpa: "8.3 / 10",
+  expected: "May 2027",
+  cgpa: "8.4 / 10",
 };
