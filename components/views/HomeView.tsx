@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   Github,
@@ -19,8 +18,6 @@ import {
   PenTool,
   Rocket,
   FileText,
-  Plus,
-  Minus,
 } from "lucide-react";
 import {
   PERSON,
@@ -30,7 +27,6 @@ import {
   MARQUEE_ROW_2,
   MARQUEE_ROW_3,
   HOW_I_WORK,
-  FAQS,
 } from "@/lib/data";
 
 type View = "home" | "work" | "code" | "blogs";
@@ -145,38 +141,6 @@ const SKILL_GROUPS = [
   { label: "Security & Tooling", color: "#FF8C00", items: ["JWT / RBAC", "OAuth / OTP", "Swagger", "Git"] },
   { label: "AI & Voice",       color: "#5BC0EB", items: ["LLMs", "RAG", "AI Voice Bots", "TTS", "STT"] },
 ];
-
-function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.4, delay: index * 0.06 }}
-      style={{ borderBottom: "1px solid var(--l-divider)" }}
-    >
-      <button
-        onClick={() => setOpen((p) => !p)}
-        style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, padding: "22px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}
-      >
-        <span style={{ fontFamily: "var(--l-font-heading)", fontSize: 16, fontWeight: 600, color: open ? "var(--l-text)" : "var(--l-text-soft)", letterSpacing: "-0.2px", transition: "color 200ms" }}>
-          {question}
-        </span>
-        <div style={{ width: 28, height: 28, borderRadius: "50%", background: open ? "rgba(255,69,0,0.12)" : "rgba(255,255,255,0.05)", border: `1px solid ${open ? "rgba(255,69,0,0.3)" : "rgba(255,255,255,0.08)"}`, display: "flex", alignItems: "center", justifyContent: "center", color: open ? "var(--l-primary)" : "var(--l-text-muted)", flexShrink: 0, transition: "all 200ms" }}>
-          {open ? <Minus size={13} /> : <Plus size={13} />}
-        </div>
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div key="answer" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }} style={{ overflow: "hidden" }}>
-            <p style={{ fontSize: 14, lineHeight: 1.75, color: "var(--l-text-soft)", paddingBottom: 22, maxWidth: 680 }}>{answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
 
 export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
   return (
@@ -484,78 +448,95 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
             </h2>
           </div>
 
-          <div style={{ borderTop: "1px solid var(--l-divider)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {EXPERIENCE.map((exp, i) => (
-              <motion.div key={exp.company}
-                initial={{ opacity: 0, y: 20 }}
+              <motion.div
+                key={exp.company}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
-                style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: 56, padding: "44px 0", borderBottom: "1px solid var(--l-divider)", alignItems: "flex-start" }}
-                className="exp-row"
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="glass-card exp-card"
+                style={{ padding: 30 }}
               >
-                {/* Left: company identity */}
-                <div>
-                  <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
-                    {exp.logo
-                      ? <img src={exp.logo} alt={exp.company} style={{ width: 36, height: 36, objectFit: "contain" }} />
-                      : <span style={{ fontFamily: "var(--l-font-heading)", fontSize: 18, fontWeight: 700, color: "var(--l-text-muted)" }}>{exp.company[0]}</span>
-                    }
+                {/* Card header: identity left, timing right */}
+                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 20, flexWrap: "wrap", marginBottom: 24 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                    <div style={{ width: 46, height: 46, borderRadius: 12, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      {exp.logo
+                        ? <img src={exp.logo} alt={exp.company} style={{ width: 34, height: 34, objectFit: "contain" }} />
+                        : <span style={{ fontFamily: "var(--l-font-heading)", fontSize: 18, fontWeight: 700, color: "var(--l-text-muted)" }}>{exp.company[0]}</span>
+                      }
+                    </div>
+                    <div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 9, flexWrap: "wrap" }}>
+                        <span style={{ fontFamily: "var(--l-font-heading)", fontSize: 17, fontWeight: 700, color: "var(--l-text)", letterSpacing: "-0.3px" }}>
+                          {exp.company}
+                        </span>
+                        {exp.current && (
+                          <span style={{ display: "inline-flex", alignItems: "center", gap: 5, height: 19, padding: "0 8px", borderRadius: 9999, background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.2)", fontSize: 9, fontFamily: "var(--l-font-mono)", color: "#22C55E", letterSpacing: "0.5px" }}>
+                            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#22C55E" }} />
+                            Current
+                          </span>
+                        )}
+                      </div>
+                      <div style={{ fontFamily: "var(--l-font-mono)", fontSize: 12.5, color: "var(--l-primary)", fontWeight: 600, marginTop: 5, letterSpacing: "0.2px" }}>
+                        {exp.role}
+                      </div>
+                    </div>
                   </div>
-                  <div style={{ fontFamily: "var(--l-font-heading)", fontSize: 15, fontWeight: 700, color: "var(--l-text)", letterSpacing: "-0.3px", marginBottom: 8 }}>
-                    {exp.company}
-                  </div>
-                  {exp.current && (
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: 5, height: 20, padding: "0 8px", borderRadius: 9999, background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.2)", fontSize: 9, fontFamily: "var(--l-font-mono)", color: "#22C55E", letterSpacing: "0.5px" }}>
-                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#22C55E" }} />
-                      Current
-                    </span>
-                  )}
-                  <div style={{ fontFamily: "var(--l-font-mono)", fontSize: 11, color: "var(--l-text-muted)", marginTop: 16, lineHeight: 1.9, letterSpacing: "0.3px" }}>
+                  <div style={{ fontFamily: "var(--l-font-mono)", fontSize: 11, color: "var(--l-text-muted)", textAlign: "right", lineHeight: 1.8, letterSpacing: "0.3px" }}>
                     {exp.period}<br />{exp.location}
                   </div>
                 </div>
 
-                {/* Right: role + details */}
-                <div>
-                  <div style={{ fontFamily: "var(--l-font-mono)", fontSize: 13, color: "var(--l-primary)", fontWeight: 600, marginBottom: 16, letterSpacing: "0.3px" }}>
-                    {exp.role}
-                  </div>
-                  <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--l-text-soft)", marginBottom: 22 }}>{exp.description}</p>
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 9 }}>
-                    {exp.bullets.map((bullet, bi) => (
-                      <li key={bi} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 13, lineHeight: 1.6, color: "var(--l-text-soft)" }}>
-                        <div style={{ width: 5, height: 5, borderRadius: "50%", background: "rgba(255,69,0,0.5)", flexShrink: 0, marginTop: 7 }} />
-                        {bullet}
-                      </li>
+                <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--l-text-soft)", marginBottom: 22, maxWidth: 760 }}>
+                  {exp.description}
+                </p>
+
+                {/* Metric tiles — the numbers lead, not the prose */}
+                <div className="exp-metrics" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 12, marginBottom: exp.highlights.length ? 20 : 22 }}>
+                  {exp.metrics.map((m) => (
+                    <div
+                      key={m.label}
+                      style={{
+                        padding: "18px 18px 16px",
+                        borderRadius: 12,
+                        background: "rgba(255,69,0,0.04)",
+                        border: "1px solid rgba(255,69,0,0.13)",
+                      }}
+                    >
+                      <div style={{ fontFamily: "var(--l-font-heading)", fontSize: 32, fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1, color: "var(--l-primary)" }}>
+                        {m.value}
+                      </div>
+                      <div style={{ fontFamily: "var(--l-font-mono)", fontSize: 10, color: "var(--l-text)", textTransform: "uppercase", letterSpacing: "1.2px", marginTop: 9 }}>
+                        {m.label}
+                      </div>
+                      <div style={{ fontSize: 12, lineHeight: 1.5, color: "var(--l-text-muted)", marginTop: 7 }}>
+                        {m.detail}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Non-numeric wins — prose, not a bullet list */}
+                {exp.highlights.length > 0 && (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 22 }}>
+                    {exp.highlights.map((h) => (
+                      <p key={h} style={{ fontSize: 13.5, lineHeight: 1.65, color: "var(--l-text-soft)", paddingLeft: 14, borderLeft: "2px solid rgba(255,69,0,0.28)" }}>
+                        {h}
+                      </p>
                     ))}
-                  </ul>
+                  </div>
+                )}
+
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {exp.stack.map((t) => (
+                    <span key={t} className="l-chip">{t}</span>
+                  ))}
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ ── */}
-      <section className="l-section" style={{ borderTop: "1px solid var(--l-divider)", paddingTop: 80 }}>
-        <div className="l-container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "flex-start" }} className="faq-grid">
-            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.5 }}>
-              <span className="l-eyebrow">FAQ</span>
-              <h2 style={{ fontFamily: "var(--l-font-heading)", fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 1.1, marginTop: 8, marginBottom: 16 }}>
-                Common{" "}
-                <span style={{ background: "linear-gradient(90deg, #FF4500, #FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>questions.</span>
-              </h2>
-              <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--l-text-muted)" }}>
-                Answers to what recruiters and hiring managers usually ask before reaching out.
-              </p>
-            </motion.div>
-            <div style={{ borderTop: "1px solid var(--l-divider)" }}>
-              {FAQS.map((faq, i) => (
-                <FaqItem key={i} question={faq.question} answer={faq.answer} index={i} />
-              ))}
-            </div>
           </div>
         </div>
       </section>

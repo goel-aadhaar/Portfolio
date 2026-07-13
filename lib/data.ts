@@ -159,12 +159,15 @@ export const EXPERIENCE = [
     current: true,
     description:
       "Architecting a modular monolith backend using TypeScript and Express, reducing debugging latency and improving API reliability across the platform.",
-    bullets: [
-      "40% reduction in debugging latency by architecting a modular monolith with TypeScript and Express",
-      "30% faster API response times via Prisma ORM and structured schema design",
-      "50% reduction in developer onboarding time by upgrading and standardising Swagger API documentation",
+    metrics: [
+      { value: "40%", label: "Debugging latency", detail: "Modular monolith in TypeScript + Express" },
+      { value: "30%", label: "Faster API response", detail: "Prisma ORM and structured schema design" },
+      { value: "50%", label: "Onboarding time", detail: "Standardised Swagger API documentation" },
+    ],
+    highlights: [
       "Hardened system security with a centralised RBAC authentication middleware across all backend services",
     ],
+    stack: ["TypeScript", "Express", "Prisma", "Swagger", "RBAC"],
   },
   {
     company: "Summentor Pro Business Consultant",
@@ -175,11 +178,13 @@ export const EXPERIENCE = [
     current: true,
     description:
       "Driving funnel automation and back-end operations to accelerate growth and streamline data collection pipelines.",
-    bullets: [
-      "12% increase in lead conversion through real-time analytics dashboards and Mixpanel funnel tracking",
-      "20 hours/month saved by automating user outreach via WhatsApp and Email API integrations",
-      "35% system throughput improvement by decoupling long-running tasks with a Redis-backed BullMQ queue",
+    metrics: [
+      { value: "35%", label: "System throughput", detail: "Redis-backed BullMQ queue for long-running tasks" },
+      { value: "12%", label: "Lead conversion", detail: "Real-time dashboards + Mixpanel funnel tracking" },
+      { value: "20 hrs", label: "Saved per month", detail: "Automated outreach via WhatsApp + Email APIs" },
     ],
+    highlights: [],
+    stack: ["Node.js", "Redis", "BullMQ", "Mixpanel", "WhatsApp API"],
   },
   {
     company: "Skill Turtle",
@@ -190,11 +195,14 @@ export const EXPERIENCE = [
     current: true,
     description:
       "Mentoring students in competitive programming and problem-solving as part of the PCD (Placement & Competitive Development) programme.",
-    bullets: [
-      "Guided 30+ students through DSA problem sets, mock contests, and interview preparation",
+    metrics: [
+      { value: "30+", label: "Students mentored", detail: "DSA problem sets, mock contests, interview prep" },
+    ],
+    highlights: [
       "Delivered public speaking sessions to improve technical communication for placement readiness",
       "Curated structured problem roadmaps tailored to individual student skill levels",
     ],
+    stack: ["DSA", "Competitive Programming", "System Design"],
   },
 ];
 
@@ -338,37 +346,6 @@ export const HOW_I_WORK = [
     step: "04",
     title: "Ship & Document",
     description: "Production readiness means more than passing tests. Swagger docs, structured onboarding notes, and monitoring are in place before the first deploy.",
-  },
-];
-
-export const FAQS = [
-  {
-    question: "What kind of roles are you looking for?",
-    answer: "Software engineering, DevOps, and infrastructure roles. I'm most useful where systems have to stay up under load — designing services, deploying them to cloud infrastructure, and keeping them reliable once real traffic arrives.",
-  },
-  {
-    question: "Are you open to internships or full-time roles?",
-    answer: "Yes — I'm actively looking for internships now, and full-time roles from my 2027 graduation. I'm happy to relocate, and I've already shipped production systems at Physics Wallah alongside my degree.",
-  },
-  {
-    question: "What's your experience with infrastructure and DevOps?",
-    answer: "I deployed and ran an examination platform on AWS end-to-end — EC2, RDS, S3, CloudFront, Amplify, and SES — serving 400+ concurrent users. I containerise services with Docker and Docker Compose using multi-stage builds, health checks, and runtime secrets, and I work day-to-day on Linux.",
-  },
-  {
-    question: "How do you approach performance issues?",
-    answer: "With data first — I profile before optimising. Find the actual bottleneck (slow query, N+1 issue, blocking I/O) and fix the root cause rather than applying generic caching on top of a broken system.",
-  },
-  {
-    question: "What's your preferred stack for a new project?",
-    answer: "Node.js or NestJS with TypeScript and PostgreSQL for most service work. Spring Boot + Kafka for event-driven or high-throughput systems. Redis for caching and queue-backed async workloads, Docker and AWS to ship it.",
-  },
-  {
-    question: "How quickly can you onboard to a new codebase?",
-    answer: "Fast. I reduced onboarding time by 50% at Physics Wallah by standardising Swagger documentation — and I apply that same discipline when I'm the one joining a new team.",
-  },
-  {
-    question: "Do you work across the full stack?",
-    answer: "My depth is in services and infrastructure, but I've shipped full-stack features in React and Next.js — including the frontend of my examination platform. I can own an API layer end-to-end and integrate cleanly with frontend teams.",
   },
 ];
 
