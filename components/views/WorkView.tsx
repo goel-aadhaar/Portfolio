@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, TrendingUp, Briefcase, CheckCircle2, Users, Zap } from "lucide-react";
-import { PROJECTS, FREELANCE } from "@/lib/data";
+import { ArrowUpRight, TrendingUp, Users, Zap } from "lucide-react";
+import { PROJECTS } from "@/lib/data";
 
-type View = "home" | "work" | "code" | "blogs" | "freelance";
+type View = "home" | "work" | "code" | "blogs";
 
 const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string }> = {
   FinTech:     { bg: "rgba(255,161,22,0.1)",  text: "#FFA116", border: "rgba(255,161,22,0.2)" },
@@ -332,6 +332,18 @@ export function WorkView({ onNavigate: _ }: { onNavigate: (v: View) => void }) {
               Projects built for{" "}
               <span style={{ color: "var(--l-primary)" }}>production.</span>
             </h1>
+            <p
+              style={{
+                fontSize: 16,
+                lineHeight: 1.7,
+                color: "var(--l-text-soft)",
+                maxWidth: 580,
+                marginTop: 20,
+              }}
+            >
+              Systems I&apos;ve designed, built, deployed, and run end-to-end — from event-driven
+              payment infrastructure to platforms serving thousands of concurrent users on AWS.
+            </p>
           </motion.div>
 
           {/* Project grid — 3 columns */}
@@ -348,174 +360,6 @@ export function WorkView({ onNavigate: _ }: { onNavigate: (v: View) => void }) {
               <ProjectCard key={project.id} project={project} index={i} />
             ))}
           </div>
-
-          {/* ── Freelance & Client Work ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55 }}
-            style={{ marginTop: 64 }}
-          >
-            <div
-              className="glass-card"
-              style={{
-                padding: "40px 40px",
-                background: "linear-gradient(135deg, rgba(255,69,0,0.05) 0%, rgba(75,0,130,0.05) 100%)",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  justifyContent: "space-between",
-                  gap: 24,
-                  marginBottom: 32,
-                  flexWrap: "wrap",
-                }}
-              >
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                    <div
-                      style={{
-                        width: 32,
-                        height: 32,
-                        borderRadius: 9,
-                        background: "rgba(255,69,0,0.12)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "var(--l-primary)",
-                      }}
-                    >
-                      <Briefcase size={16} />
-                    </div>
-                    <span className="l-eyebrow" style={{ marginBottom: 0 }}>
-                      Freelance & Client Work
-                    </span>
-                  </div>
-                  <p style={{ fontSize: 14, lineHeight: 1.65, color: "var(--l-text-soft)", maxWidth: 520 }}>
-                    {FREELANCE.tagline}
-                  </p>
-                </div>
-                <div style={{ textAlign: "right", flexShrink: 0 }}>
-                  <div
-                    style={{
-                      fontFamily: "var(--l-font-heading)",
-                      fontSize: 56,
-                      fontWeight: 700,
-                      letterSpacing: "-3px",
-                      lineHeight: 1,
-                      color: "var(--l-primary)",
-                    }}
-                  >
-                    {FREELANCE.count}
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: "var(--l-font-mono)",
-                      fontSize: 11,
-                      color: "var(--l-text-muted)",
-                      textTransform: "uppercase",
-                      letterSpacing: "1.5px",
-                      marginTop: 4,
-                    }}
-                  >
-                    Client projects
-                  </div>
-                </div>
-              </div>
-
-              {/* Client badges */}
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 8,
-                  marginBottom: 32,
-                  paddingBottom: 28,
-                  borderBottom: "1px solid var(--l-divider)",
-                }}
-              >
-                {FREELANCE.clients.map((client) => (
-                  <span
-                    key={client}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      height: 32,
-                      padding: "0 16px",
-                      borderRadius: 9999,
-                      background: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(255,255,255,0.09)",
-                      fontFamily: "var(--l-font-heading)",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "var(--l-text)",
-                      letterSpacing: "-0.2px",
-                    }}
-                  >
-                    {client}
-                  </span>
-                ))}
-                <span
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    height: 32,
-                    padding: "0 16px",
-                    borderRadius: 9999,
-                    background: "rgba(255,255,255,0.02)",
-                    border: "1px dashed rgba(255,255,255,0.08)",
-                    fontFamily: "var(--l-font-mono)",
-                    fontSize: 11,
-                    color: "var(--l-text-muted)",
-                    letterSpacing: "0.5px",
-                  }}
-                >
-                  +10 more
-                </span>
-              </div>
-
-              {/* Highlight bullets */}
-              <div
-                style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}
-                className="work-grid"
-              >
-                {FREELANCE.highlights.map((highlight, i) => {
-                  const [client, ...rest] = highlight.split(" — ");
-                  return (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 12 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.35, delay: i * 0.07 }}
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: 10,
-                        padding: "14px 16px",
-                        borderRadius: 10,
-                        background: "rgba(255,255,255,0.02)",
-                        border: "1px solid rgba(255,255,255,0.06)",
-                      }}
-                    >
-                      <CheckCircle2 size={14} style={{ color: "var(--l-primary)", flexShrink: 0, marginTop: 2 }} />
-                      <div>
-                        <span style={{ fontFamily: "var(--l-font-heading)", fontSize: 13, fontWeight: 600, color: "var(--l-text)" }}>
-                          {client}
-                        </span>
-                        <span style={{ fontSize: 13, color: "var(--l-text-soft)", lineHeight: 1.5 }}>
-                          {" "}— {rest.join(" — ")}
-                        </span>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}

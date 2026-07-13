@@ -6,7 +6,7 @@ import { Clock, ArrowRight } from "lucide-react";
 import { BLOGS } from "@/lib/data";
 import { BlogDetailView } from "@/components/views/BlogDetailView";
 
-type View = "home" | "work" | "code" | "blogs" | "freelance";
+type View = "home" | "work" | "code" | "blogs";
 
 const ALL_TAGS = Array.from(new Set(BLOGS.flatMap((b) => b.tags)));
 

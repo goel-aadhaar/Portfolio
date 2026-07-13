@@ -1,22 +1,23 @@
 export const PERSON = {
   name: "Aadhaar Goel",
-  role: "Backend Developer",
-  tagline: "CS student at IIT Guwahati building production-grade backend systems — fast, reliable, and built to scale.",
+  role: "Software Engineer",
+  tagline: "CS student at IIT Guwahati building production systems and the cloud infrastructure they run on — fast, reliable, and built to scale.",
   location: "India",
   email: "goel.aadhaar@outlook.com",
   phone: "+91-9667896164",
   github: "https://github.com/goel-aadhaar",
   linkedin: "https://www.linkedin.com/in/aadhaar-goel/",
   twitter: "https://twitter.com/aadhaar_goel",
+  resume: "/resume.pdf",
   available: true,
-  availablePeriod: "open to roles",
+  availablePeriod: "open to internships & full-time roles",
 };
 
 export const STATS = [
   { value: "1500+", label: "DSA problems solved" },
   { value: "8.3", label: "CGPA at IIT Guwahati" },
   { value: "40%", label: "API latency reduced at PW" },
-  { value: "16+", label: "Client projects delivered" },
+  { value: "6+", label: "Production systems shipped" },
 ];
 
 export const PROJECTS = [
@@ -201,7 +202,8 @@ export const SKILLS = {
   languages: ["TypeScript", "Java", "C++", "SQL", "Node.js"],
   frameworks: ["Spring Boot", "NestJS", "Express.js", "Prisma", "BullMQ", "gRPC", "REST"],
   databases: ["PostgreSQL", "MongoDB", "Redis", "Kafka"],
-  cloud: ["AWS", "Docker", "Git", "JWT / RBAC", "Swagger"],
+  cloud: ["AWS EC2", "RDS", "S3", "CloudFront", "Amplify", "SES", "Docker", "Docker Compose", "Linux", "CI/CD", "Vercel"],
+  security: ["JWT / RBAC", "OAuth / OTP", "Swagger", "Git"],
   ai: ["LLMs", "RAG", "AI Voice Bots", "TTS", "STT"],
   tools: ["DSA & Algorithms", "OS & Networks", "CQRS", "Microservices", "Mixpanel"],
 };
@@ -316,24 +318,6 @@ export const BLOGS = [
   },
 ];
 
-export const FREELANCE = {
-  count: "16+",
-  tagline: "From company websites and AI chatbots to CRMs, admin panels, and backend APIs — full-spectrum solutions for startups and growing businesses.",
-  clients: [
-    "PWLeapx",
-    "PW Skills Portal",
-    "Sahi Loan",
-    "Loopskills",
-    "Summentors PRO",
-  ],
-  highlights: [
-    "Sahi Loan — loan origination backend with automated eligibility engine and Razorpay disbursement integration",
-    "PWLeapx — real-time leaderboard and gamification API serving 50k+ concurrent students",
-    "PW Skills Portal — course delivery platform with Redis-cached progress tracking and OTP auth flow",
-    "Loopskills — skill assessment engine with adaptive scoring and automated certificate generation",
-  ],
-};
-
 export const HOW_I_WORK = [
   {
     step: "01",
@@ -359,28 +343,32 @@ export const HOW_I_WORK = [
 
 export const FAQS = [
   {
-    question: "What types of projects do you specialise in?",
-    answer: "Backend systems — REST APIs, microservices, real-time platforms, and payment infrastructure. I work best on problems where reliability, throughput, and data consistency matter most.",
+    question: "What kind of roles are you looking for?",
+    answer: "Software engineering, DevOps, and infrastructure roles. I'm most useful where systems have to stay up under load — designing services, deploying them to cloud infrastructure, and keeping them reliable once real traffic arrives.",
   },
   {
-    question: "Are you open to freelance or contract work?",
-    answer: "Yes. I take on select freelance projects where I can own the backend architecture end-to-end. Past clients include PWLeapx and Summentors PRO across edtech and fintech.",
+    question: "Are you open to internships or full-time roles?",
+    answer: "Yes — I'm actively looking for internships now, and full-time roles from my 2027 graduation. I'm happy to relocate, and I've already shipped production systems at Physics Wallah alongside my degree.",
+  },
+  {
+    question: "What's your experience with infrastructure and DevOps?",
+    answer: "I deployed and ran an examination platform on AWS end-to-end — EC2, RDS, S3, CloudFront, Amplify, and SES — serving 400+ concurrent users. I containerise services with Docker and Docker Compose using multi-stage builds, health checks, and runtime secrets, and I work day-to-day on Linux.",
   },
   {
     question: "How do you approach performance issues?",
     answer: "With data first — I profile before optimising. Find the actual bottleneck (slow query, N+1 issue, blocking I/O) and fix the root cause rather than applying generic caching on top of a broken system.",
   },
   {
-    question: "What's your preferred stack for a new backend project?",
-    answer: "Node.js + TypeScript + PostgreSQL for most API work. Spring Boot + Kafka for event-driven or high-throughput systems. Redis for caching and queue-backed async workloads.",
+    question: "What's your preferred stack for a new project?",
+    answer: "Node.js or NestJS with TypeScript and PostgreSQL for most service work. Spring Boot + Kafka for event-driven or high-throughput systems. Redis for caching and queue-backed async workloads, Docker and AWS to ship it.",
   },
   {
     question: "How quickly can you onboard to a new codebase?",
     answer: "Fast. I reduced onboarding time by 50% at Physics Wallah by standardising Swagger documentation — and I apply that same discipline when I'm the one joining a new team.",
   },
   {
-    question: "Do you work on frontend as well?",
-    answer: "Primarily backend, but I've built full-stack features in React and Next.js. I can own the entire API layer and collaborate closely with frontend engineers on integration.",
+    question: "Do you work across the full stack?",
+    answer: "My depth is in services and infrastructure, but I've shipped full-stack features in React and Next.js — including the frontend of my examination platform. I can own an API layer end-to-end and integrate cleanly with frontend teams.",
   },
 ];
 

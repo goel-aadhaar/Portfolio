@@ -11,14 +11,12 @@ import { HomeView } from "@/components/views/HomeView";
 import { WorkView } from "@/components/views/WorkView";
 import { CodeView } from "@/components/views/CodeView";
 import { BlogsView } from "@/components/views/BlogsView";
-import { FreelanceView } from "@/components/views/FreelanceView";
 
-type View = "home" | "work" | "code" | "blogs" | "freelance";
+type View = "home" | "work" | "code" | "blogs";
 
 const NAV_ITEMS: { id: View; label: string }[] = [
   { id: "home", label: "Home" },
   { id: "work", label: "Work" },
-  { id: "freelance", label: "Freelance" },
   { id: "code", label: "Code" },
   { id: "blogs", label: "Blogs" },
 ];
@@ -28,7 +26,6 @@ const VIEW_MAP = {
   work: WorkView,
   code: CodeView,
   blogs: BlogsView,
-  freelance: FreelanceView,
 };
 
 export function SpaShell() {

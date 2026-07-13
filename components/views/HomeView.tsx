@@ -8,6 +8,7 @@ import {
   Linkedin,
   Mail,
   Server,
+  Cloud,
   Zap,
   Shield,
   Code2,
@@ -32,7 +33,7 @@ import {
   FAQS,
 } from "@/lib/data";
 
-type View = "home" | "work" | "code" | "blogs" | "freelance";
+type View = "home" | "work" | "code" | "blogs";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -126,7 +127,8 @@ function FloatingCard({
 }
 
 const bentoItems = [
-  { icon: Server, title: "Backend Architecture", body: "Modular monoliths and microservices in Node.js, Spring Boot, and TypeScript — built for maintainability and production scale.", wide: true, accent: "rgba(255,69,0,0.07)" },
+  { icon: Server, title: "Systems Architecture", body: "Modular monoliths and microservices in Node.js, NestJS, Spring Boot, and TypeScript — built for maintainability and production scale.", wide: true, accent: "rgba(255,69,0,0.07)" },
+  { icon: Cloud, title: "Cloud & Infrastructure", body: "Production deployments on AWS — EC2, RDS, S3, CloudFront, Amplify, and SES. Dockerised services with multi-stage builds, Docker Compose, and health-checked releases.", wide: false, accent: "rgba(34,197,94,0.07)" },
   { icon: Code2, title: "DSA & Problem Solving", body: "1500+ problems solved. LeetCode max 1837 · Codeforces max 1409 (Specialist).", wide: false, accent: "rgba(75,0,130,0.1)" },
   { icon: Zap, title: "Performance", body: "Redis-backed BullMQ queues, Kafka event streams, ORM-level query optimisation. 40% latency reduction at Physics Wallah.", wide: false, accent: "rgba(255,69,0,0.05)" },
   { icon: Shield, title: "Auth & Security", body: "Centralised JWT + RBAC middleware, API gateway patterns, secure multi-tenant system design.", wide: false, accent: "rgba(34,197,94,0.05)" },
@@ -136,11 +138,12 @@ const bentoItems = [
 const HOW_ICONS = [Search, PenTool, Rocket, FileText];
 
 const SKILL_GROUPS = [
-  { label: "Languages",     color: "#FF4500", items: ["TypeScript", "Java", "C++", "SQL", "Node.js"] },
-  { label: "Frameworks",    color: "#a78bfa", items: ["Spring Boot", "NestJS", "Express.js", "Prisma", "BullMQ", "gRPC", "REST"] },
-  { label: "Databases",     color: "#FFA116", items: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka"] },
-  { label: "Infrastructure",color: "#22C55E", items: ["Docker", "AWS", "Git", "JWT / RBAC", "Swagger"] },
-  { label: "AI & Voice",    color: "#5BC0EB", items: ["LLMs", "RAG", "AI Voice Bots", "TTS", "STT"] },
+  { label: "Languages",        color: "#FF4500", items: ["TypeScript", "Java", "C++", "SQL", "Node.js"] },
+  { label: "Frameworks",       color: "#a78bfa", items: ["Spring Boot", "NestJS", "Express.js", "Prisma", "BullMQ", "gRPC", "REST"] },
+  { label: "Databases",        color: "#FFA116", items: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka"] },
+  { label: "Cloud & DevOps",   color: "#22C55E", items: ["AWS EC2", "RDS", "S3", "CloudFront", "Amplify", "SES", "Docker", "Docker Compose", "Linux", "CI/CD", "Vercel"] },
+  { label: "Security & Tooling", color: "#FF8C00", items: ["JWT / RBAC", "OAuth / OTP", "Swagger", "Git"] },
+  { label: "AI & Voice",       color: "#5BC0EB", items: ["LLMs", "RAG", "AI Voice Bots", "TTS", "STT"] },
 ];
 
 function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
@@ -194,7 +197,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
               <motion.div custom={0} variants={fadeUp} initial="hidden" animate="show" style={{ marginBottom: 28 }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 8, height: 28, padding: "0 14px", borderRadius: 9999, background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.2)", fontSize: 12, fontFamily: "var(--l-font-mono)", color: "#22C55E", letterSpacing: "0.5px" }}>
                   <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E", boxShadow: "0 0 0 3px rgba(34,197,94,0.25)" }} />
-                  Available · Open to roles
+                  Available · Open to internships &amp; full-time roles
                 </span>
               </motion.div>
 
@@ -207,7 +210,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
 
               <motion.div custom={2} variants={fadeUp} initial="hidden" animate="show" style={{ marginBottom: 8 }}>
                 <p style={{ fontFamily: "var(--l-font-heading)", fontSize: "clamp(28px, 4vw, 52px)", lineHeight: 1.05, letterSpacing: "-1.5px", fontWeight: 600, color: "var(--l-text)" }}>
-                  Backend{" "}
+                  Software{" "}
                   <span style={{ background: "linear-gradient(90deg, #FF4500, #FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Engineer</span>
                 </p>
               </motion.div>
@@ -229,7 +232,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
               <motion.p custom={4} variants={fadeUp} initial="hidden" animate="show" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 500, marginBottom: 36 }}>
                 <span style={{ color: "var(--l-text-soft)" }}>CS student at </span>
                 <span style={{ color: "#22C55E", fontWeight: 500 }}>IIT Guwahati</span>
-                <span style={{ color: "var(--l-text-soft)" }}> building production-grade backend systems — </span>
+                <span style={{ color: "var(--l-text-soft)" }}> building production systems and the cloud infrastructure they run on — </span>
                 <span style={{ color: "var(--l-primary)", fontWeight: 500 }}>fast</span>
                 <span style={{ color: "var(--l-text-soft)" }}>, </span>
                 <span style={{ color: "#FFA116", fontWeight: 500 }}>reliable</span>
@@ -240,6 +243,9 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
                 <button onClick={() => onNavigate("work")} className="l-btn-primary">
                   View Work <ArrowUpRight size={16} />
                 </button>
+                <a href={PERSON.resume} target="_blank" rel="noopener noreferrer" className="l-btn-ghost">
+                  <FileText size={16} /> Resume
+                </a>
                 <a href={PERSON.github} target="_blank" rel="noopener noreferrer" className="l-btn-ghost">
                   <Github size={16} /> GitHub
                 </a>
@@ -542,7 +548,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
                 <span style={{ background: "linear-gradient(90deg, #FF4500, #FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>questions.</span>
               </h2>
               <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--l-text-muted)" }}>
-                Answers to what hiring managers and clients usually ask before reaching out.
+                Answers to what recruiters and hiring managers usually ask before reaching out.
               </p>
             </motion.div>
             <div style={{ borderTop: "1px solid var(--l-divider)" }}>
@@ -565,11 +571,12 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
               <span style={{ background: "linear-gradient(90deg, #FF4500, #FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Build.</span>
             </h2>
             <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--l-text-soft)", maxWidth: 480, margin: "0 auto 40px" }}>
-              I&apos;m open to senior/staff backend roles and select freelance projects.
-              If you&apos;re building something ambitious, let&apos;s talk.
+              I&apos;m looking for software, DevOps, and infrastructure internships now,
+              and full-time roles from 2027. If your team is building something ambitious, let&apos;s talk.
             </p>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
               <a href={`mailto:${PERSON.email}`} className="l-btn-primary"><Mail size={16} /> Send a message</a>
+              <a href={PERSON.resume} target="_blank" rel="noopener noreferrer" className="l-btn-ghost"><FileText size={16} /> Resume</a>
               <a href={PERSON.linkedin} target="_blank" rel="noopener noreferrer" className="l-btn-ghost"><Linkedin size={16} /> LinkedIn</a>
             </div>
             <p style={{ marginTop: 64, fontFamily: "var(--l-font-mono)", fontSize: 11, color: "var(--l-text-muted)", letterSpacing: "1px" }}>

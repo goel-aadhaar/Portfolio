@@ -21,13 +21,30 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aadhaar Goel — Backend Engineer",
+  title: "Aadhaar Goel — Software Engineer | IIT Guwahati",
   description:
-    "CS student at IIT Guwahati building production-grade backend systems — fast, reliable, and built to scale.",
+    "Software engineer and CS student at IIT Guwahati. Distributed systems, cloud infrastructure, and DevOps — NestJS, Spring Boot, Kafka, Docker, AWS. Open to software, DevOps, and infrastructure internships and full-time roles from 2027.",
+  keywords: [
+    "Software Engineer",
+    "Software Engineer Intern",
+    "DevOps Engineer",
+    "Infrastructure Engineer",
+    "Cloud Engineer",
+    "Site Reliability Engineer",
+    "AWS",
+    "Docker",
+    "Linux",
+    "Node.js",
+    "NestJS",
+    "Spring Boot",
+    "Kafka",
+    "IIT Guwahati",
+    "Aadhaar Goel",
+  ],
   openGraph: {
-    title: "Aadhaar Goel — Backend Engineer",
+    title: "Aadhaar Goel — Software Engineer | IIT Guwahati",
     description:
-      "CS student at IIT Guwahati building production-grade backend systems.",
+      "Distributed systems, cloud infrastructure, and DevOps: microservices, Kafka, Docker, AWS. Open to software, DevOps, and infrastructure roles.",
     type: "website",
   },
 };

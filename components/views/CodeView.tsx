@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { CF_RATING_HISTORY } from "@/lib/data";
 
-type View = "home" | "work" | "code" | "blogs" | "freelance";
+type View = "home" | "work" | "code" | "blogs";
 
 interface GithubUser {
   public_repos: number;
