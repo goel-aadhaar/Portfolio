@@ -1,7 +1,7 @@
 export const PERSON = {
   name: "Aadhaar Goel",
   role: "Software Engineer",
-  tagline: "CS student at IIT Guwahati building production systems and the cloud infrastructure they run on — fast, reliable, and built to scale.",
+  tagline: "Passionate about backend engineering, system design, cloud infrastructure, and modern AI applications.",
   location: "India",
   email: "goel.aadhaar@outlook.com",
   phone: "+91-9667896164",
@@ -215,7 +215,7 @@ export const SKILLS = {
   languages: ["TypeScript", "JavaScript", "Java", "Python", "C++", "SQL"],
   frameworks: ["Node.js", "NestJS", "Express.js", "Spring Boot", "React", "Prisma", "BullMQ", "gRPC"],
   databases: ["PostgreSQL", "MongoDB", "Redis", "Kafka"],
-  cloud: ["Docker", "Kubernetes", "AWS EC2", "Lambda", "RDS", "S3", "SES", "Amplify", "Prometheus", "Grafana", "Linux", "Git"],
+  cloud: ["Docker", "Kubernetes", "CI/CD", "AWS EC2", "Lambda", "RDS", "S3", "SES", "Amplify", "Prometheus", "Grafana", "Linux", "Git"],
   security: ["JWT / RBAC", "OAuth / OTP", "Swagger", "Git"],
   ai: ["LLMs", "RAG", "AI Agents", "AI Proctoring", "AI Evaluation", "AI Voice Bots", "TTS", "STT"],
   coreCs: ["System Design", "Distributed Systems", "Operating Systems", "DBMS", "Computer Networks", "DSA"],
@@ -234,7 +234,7 @@ export const MARQUEE_ROW_1 = [
 ];
 
 export const MARQUEE_ROW_2 = [
-  "Docker", "Kubernetes", "AWS", "Lambda", "Prometheus", "Grafana", "Linux", "PostgreSQL", "MongoDB", "Redis", "Apache Kafka", "Git",
+  "Docker", "Kubernetes", "CI/CD", "AWS", "Lambda", "Prometheus", "Grafana", "Linux", "PostgreSQL", "MongoDB", "Redis", "Apache Kafka",
 ];
 
 export const MARQUEE_ROW_3 = [

@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     "AWS",
     "Docker",
     "Kubernetes",
+    "CI/CD",
     "Prometheus",
     "Grafana",
     "Linux",

@@ -137,7 +137,7 @@ const SKILL_GROUPS = [
   { label: "Languages",        color: "#FF4500", items: ["TypeScript", "JavaScript", "Java", "Python", "C++", "SQL"] },
   { label: "Frameworks",       color: "#a78bfa", items: ["Node.js", "NestJS", "Express.js", "Spring Boot", "React", "Prisma", "BullMQ", "gRPC"] },
   { label: "Databases",        color: "#FFA116", items: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka"] },
-  { label: "Cloud & DevOps",   color: "#22C55E", items: ["Docker", "Kubernetes", "AWS EC2", "Lambda", "RDS", "S3", "SES", "Amplify", "Prometheus", "Grafana", "Linux", "Git"] },
+  { label: "Cloud & DevOps",   color: "#22C55E", items: ["Docker", "Kubernetes", "CI/CD", "AWS EC2", "Lambda", "RDS", "S3", "SES", "Amplify", "Prometheus", "Grafana", "Linux", "Git"] },
   { label: "AI & ML",          color: "#5BC0EB", items: ["LLMs", "RAG", "AI Agents", "AI Proctoring", "AI Evaluation", "AI Voice Bots", "TTS", "STT"] },
   { label: "Security & Auth",  color: "#FF8C00", items: ["JWT / RBAC", "OAuth / OTP", "Swagger"] },
   { label: "Core CS",          color: "#e879f9", items: ["System Design", "Distributed Systems", "Operating Systems", "DBMS", "Computer Networks", "DSA"] },
@@ -195,13 +195,15 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
               </motion.div>
 
               <motion.p custom={4} variants={fadeUp} initial="hidden" animate="show" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 500, marginBottom: 36 }}>
-                <span style={{ color: "var(--l-text-soft)" }}>CS student at </span>
-                <span style={{ color: "#22C55E", fontWeight: 500 }}>IIT Guwahati</span>
-                <span style={{ color: "var(--l-text-soft)" }}> building production systems and the cloud infrastructure they run on — </span>
-                <span style={{ color: "var(--l-primary)", fontWeight: 500 }}>fast</span>
+                <span style={{ color: "var(--l-text-soft)" }}>Passionate about </span>
+                <span style={{ color: "var(--l-primary)", fontWeight: 500 }}>backend engineering</span>
                 <span style={{ color: "var(--l-text-soft)" }}>, </span>
-                <span style={{ color: "#FFA116", fontWeight: 500 }}>reliable</span>
-                <span style={{ color: "var(--l-text-soft)" }}>, and built to scale.</span>
+                <span style={{ color: "#a78bfa", fontWeight: 500 }}>system design</span>
+                <span style={{ color: "var(--l-text-soft)" }}>, </span>
+                <span style={{ color: "#22C55E", fontWeight: 500 }}>cloud infrastructure</span>
+                <span style={{ color: "var(--l-text-soft)" }}>, and </span>
+                <span style={{ color: "#5BC0EB", fontWeight: 500 }}>modern AI applications</span>
+                <span style={{ color: "var(--l-text-soft)" }}>.</span>
               </motion.p>
 
               <motion.div custom={5} variants={fadeUp} initial="hidden" animate="show" style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 40 }}>

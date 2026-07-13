@@ -54,7 +54,9 @@ Long-form blog bodies live in `lib/blog-content.ts`.
   survive an interview screen. The resume is the source of truth for skills and facts;
   when the two disagree, the resume wins.
 - Confirmed by the resume and safe to feature: Kubernetes, Prometheus, Grafana, AWS Lambda,
-  Python, React, AI proctoring/evaluation. Not evidenced: Terraform, CI/CD tooling by name.
+  Python, React, AI proctoring/evaluation.
+- CI/CD is confirmed by Aadhaar directly but is **not yet on the resume** — it should be added
+  there so the two documents agree. Not evidenced anywhere: Terraform.
 
 ## Third-party services
 
