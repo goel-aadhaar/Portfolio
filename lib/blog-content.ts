@@ -181,8 +181,8 @@ export const BLOG_CONTENTS: BlogContent[] = [
 
       { t: 'h2', text: 'Results' },
       { t: 'ul', items: [
-        '40% reduction in API response times — primarily from eliminating N+1 queries and adding missing database indexes',
-        '30% faster response times on common endpoints through structured Prisma schema and join optimisation',
+        '30% faster API response times — primarily from eliminating N+1 queries and adding missing database indexes',
+        '40% faster issue resolution from debugging middleware and queries',
         '50% reduction in developer onboarding time from the modular structure and current Swagger documentation',
         'Zero auth bypass bugs post-centralisation — the RBAC middleware became the single source of truth for all permission checks',
       ]},
@@ -194,7 +194,7 @@ export const BLOG_CONTENTS: BlogContent[] = [
     slug: 'kafka-payments-platform',
     blocks: [
       { t: 'h2', text: 'Why Event-Driven for Payments?' },
-      { t: 'p', text: 'When I designed this PayPal-like payments platform, the first architectural decision was the hardest: should this be a straightforward REST-based monolith, or something more ambitious? The answer became clear once I mapped out the domain.' },
+      { t: 'p', text: 'When I designed this payment wallet backend, the first architectural decision was the hardest: should this be a straightforward REST-based monolith, or something more ambitious? The answer became clear once I mapped out the domain.' },
       { t: 'p', text: 'Payments are inherently event-driven. A user initiates a transfer — that is an event. The wallet service validates the balance — another event. Fraud detection runs asynchronously. The notification service sends a receipt. Each step can fail independently, retry independently, and scale independently. A synchronous REST chain couples all of these together and makes the system fragile — a slow fraud check blocks the entire transaction.' },
 
       { t: 'h2', text: 'Architecture: Seven Independent Services' },

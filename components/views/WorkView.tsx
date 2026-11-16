@@ -341,8 +341,8 @@ export function WorkView({ onNavigate: _ }: { onNavigate: (v: View) => void }) {
                 marginTop: 20,
               }}
             >
-              Systems I&apos;ve designed, built, deployed, and run end-to-end — from event-driven
-              payment infrastructure to platforms serving thousands of concurrent users on AWS.
+              Systems I&apos;ve designed, built, and deployed end-to-end — from an AI test-automation
+              platform that was acquired to event-driven microservices on Kafka and Kubernetes.
             </p>
           </motion.div>
 

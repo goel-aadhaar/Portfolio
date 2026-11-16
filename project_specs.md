@@ -2,61 +2,69 @@
 
 ## What the app does and who uses it
 
-A single-page developer portfolio for **Aadhaar Goel**, Software Engineer and CS student at IIT Guwahati (Class of 2027).
+A single-page developer portfolio for **Aadhaar Goel**, Backend & AI engineer and B.Tech Data Science & AI
+student at IIT Guwahati (2023 – 2027 expected).
 
-**Primary goal: land a software / DevOps / infrastructure internship now, and a full-time role from 2027.**
-
-Positioned as a **software engineer** — not backend-only. The site should read equally well to a
-software, DevOps, infrastructure, or cloud/SRE recruiter.
+**Sole goal: land a software engineering internship.** The site is for internships only — no full-time,
+freelance, or client-services messaging anywhere.
 
 Target audience, in priority order:
 1. **Recruiters** — skim for role fit, availability, resume, contact
-2. **Hiring managers / tech leads** — check depth: real systems, real scale, real metrics
+2. **Hiring managers / tech leads** — check depth: real systems, real metrics
 3. **Interviewers** — verify DSA/CP credentials and engineering judgement
-
-Everything on the site serves that goal. There is **no freelance or client-services positioning** — past work is presented as **projects and production work**, not client engagements.
 
 ## Tech Stack
 
 - **Framework:** Next.js 16 (App Router, TypeScript)
 - **Styling:** Tailwind CSS + CSS custom properties (`--l-*` design tokens)
-- **Animations:** Framer Motion (view transitions, hover, scroll reveals)
+- **Animations:** Framer Motion
 - **Fonts:** Bricolage Grotesque (display), IBM Plex Sans (body), JetBrains Mono (mono)
 - **Icons:** Lucide React
 - **Deployment:** Vercel (auto-deploys on push to `master`)
 
 ## Structure
 
-Single-page app (`/`) with a client-side view switcher (`components/SpaShell.tsx`).
-Four tabs — **no Freelance tab**:
+Single-page app (`/`) with a client-side view switcher (`components/SpaShell.tsx`). Four tabs:
 
-1. **Home** — hero (availability badge, Resume + GitHub CTAs), capability bento, tech stack, how I work, experience, FAQ, contact CTA
-2. **Work** — "Projects built for production": 6 project cards with tech, impact, and scale metrics
+1. **Home** — hero (availability badge, Resume + GitHub CTAs), expertise list, tech stack, how I work, experience, contact CTA
+2. **Work** — project cards with tech, impact, and metrics
 3. **Code** — competitive programming profiles (LeetCode, Codeforces) via live API routes
 4. **Blogs** — technical writing, with a detail view per post
 
 ## Data
 
-All content is static in `lib/data.ts` (no database/CMS):
-`PERSON`, `STATS`, `PROJECTS`, `EXPERIENCE`, `SKILLS`, `MARQUEE_*`, `BLOGS`, `HOW_I_WORK`, `FAQS`, `CF_RATING_HISTORY`, `ACHIEVEMENTS`, `EDUCATION`.
-Long-form blog bodies live in `lib/blog-content.ts`.
+All content is static in `lib/data.ts` (no database/CMS). Long-form blog bodies live in `lib/blog-content.ts`.
 
-## Positioning rules (important)
+## Source of truth
 
-- Framing is **"projects and production work"** — never "clients", "freelance", "engagements", or "consulting"
-- Title is **"Software Engineer"** — do not narrow the site's positioning to "Backend Engineer".
-  (The Physics Wallah job title "Backend Developer Intern" stays as-is — it's a factual job title.)
-- Target roles are **software, DevOps, and infrastructure** — surface cloud/infra evidence
-  (AWS, Docker, Linux) as prominently as the API/services work
-- Availability copy must say **internships + full-time from 2027** — never "senior/staff roles"
-- Every project should carry a **concrete metric** (latency, concurrency, throughput, scale)
-- **Never claim a skill with no evidence** on the resume (`public/resume.pdf`) — it will not
-  survive an interview screen. The resume is the source of truth for skills and facts;
-  when the two disagree, the resume wins.
-- Confirmed by the resume and safe to feature: Kubernetes, Prometheus, Grafana, AWS Lambda,
-  Python, React, AI proctoring/evaluation.
-- CI/CD is confirmed by Aadhaar directly but is **not yet on the resume** — it should be added
-  there so the two documents agree. Not evidenced anywhere: Terraform.
+**The resume (`public/resume.pdf`, Nov 2026 version) is the source of truth.** Every fact, metric, skill,
+date, and project on the site must match it. Anything not on the resume is removed.
+
+## Positioning rules
+
+- Availability copy says **"Open to internships"** only — never "full-time", "roles from 2027", or "senior"
+- Framing is "projects and production work" — never "clients", "freelance", or "consulting"
+- Job titles are copied exactly from the resume
+- Never claim a skill the resume does not list
+
+## This task: internship-only + resume sync
+
+| Area | Change |
+|---|---|
+| Availability | "Open to internships" in hero badge, CTA, and page metadata; all full-time wording removed |
+| Person | Tagline = resume summary; location "Bengaluru, India" |
+| Education | B.Tech Data Science & AI, IIT Guwahati, 2023 – 2027 (Expected), CGPA **8.29** (was 8.4 / B.Sc.) |
+| Stats | 1500+ DSA problems · 8.29 CGPA · 3 industry internships · 4,400+ automated tests |
+| Experience | **Tattva Education Technologies** — Software Engineer Intern, Sep 2026 – Present (new, current) · **Physics Wallah** — Backend Developer Intern, Feb – Aug 2026 (no longer current) · **Summentors PRO** — Tech & Growth Solutions *Intern*, Mar – Jul 2026 · metrics/bullets rewritten from resume |
+| Projects | **AI Test Automation Platform** (acquired; new, featured first) · **Multi-Tenant CBT Platform** · **Payment Wallet** (4 Spring Boot services over Kafka) · **UrbanSole** (AI copilot, RAG, Qdrant, 933 users) — all rewritten from resume |
+| Skills / marquee | Exactly the resume skill list (adds Fastify, Qdrant, Next.js, Playwright, Appium, OWASP ZAP, mutation testing, tool calling, ECR; drops NestJS, gRPC, MongoDB, Prometheus, Grafana, Amplify, AI proctoring/voice bots) |
+| Hero cards | "Currently at Tattva", LeetCode 1837, IIT Guwahati 8.29 |
+| Expertise list | Rewritten so every claim is on the resume (no gRPC, NestJS, Prometheus, "40% latency") |
+| Achievements | Hackathon: 1st of 53 teams, PW Institute of Innovation, agritech IoT · CP: Codeforces Specialist 1409, LeetCode 1837 |
+| Resume file | You replace `public/resume.pdf` with the new PDF (I can't save the attached file for you) |
+
+Open decisions (answered before build): projects/experience not on the resume, and blog posts whose numbers
+disagree with the resume.
 
 ## Third-party services
 
@@ -65,11 +73,8 @@ Long-form blog bodies live in `lib/blog-content.ts`.
 
 ## What "done" looks like
 
-- [x] Build passes with zero TypeScript errors (`npm run build`)
-- [x] Dev server runs with no console/runtime errors
-- [x] All freelance/client content removed (page, nav, data, stats, FAQ, CTA)
-- [x] Projects retained and framed as production work
-- [x] Site positioned for internships + full-time roles (hero, FAQ, CTA, metadata)
-- [x] Resume button in hero and contact CTA
-- [ ] **`public/resume.pdf` added** — button 404s until the PDF is dropped in
-- [x] Deployed to Vercel
+- [ ] No "full-time" wording anywhere on the site or in metadata
+- [ ] Every fact on the site matches the Nov 2026 resume
+- [ ] `npm run build` passes with zero errors
+- [ ] Dev server runs; Home and Work pages load with no console errors
+- [ ] `public/resume.pdf` replaced with the new resume (your step)

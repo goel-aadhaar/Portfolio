@@ -11,7 +11,7 @@ import {
   Zap,
   Shield,
   Code2,
-  Layers,
+  Bot,
   MapPin,
   GraduationCap,
   Search,
@@ -123,24 +123,24 @@ function FloatingCard({
 }
 
 const bentoItems = [
-  { icon: Server, title: "Systems Architecture", body: "Modular monoliths and microservices in Node.js, NestJS, Spring Boot, and TypeScript — built for maintainability and production scale.", wide: true, accent: "rgba(255,69,0,0.07)" },
-  { icon: Cloud, title: "Cloud & Infrastructure", body: "Production deployments on AWS — EC2, Lambda, RDS, S3, SES, Amplify. Services containerised with Docker, orchestrated on Kubernetes, and monitored with Prometheus and Grafana for health and performance.", wide: false, accent: "rgba(34,197,94,0.07)" },
-  { icon: Code2, title: "DSA & Problem Solving", body: "1500+ problems solved. LeetCode max 1837 · Codeforces max 1409 (Specialist).", wide: false, accent: "rgba(75,0,130,0.1)" },
-  { icon: Zap, title: "Performance", body: "Redis-backed BullMQ queues, Kafka event streams, ORM-level query optimisation. 40% latency reduction at Physics Wallah.", wide: false, accent: "rgba(255,69,0,0.05)" },
-  { icon: Shield, title: "Auth & Security", body: "Centralised JWT + RBAC middleware, API gateway patterns, secure multi-tenant system design.", wide: false, accent: "rgba(34,197,94,0.05)" },
-  { icon: Layers, title: "Distributed Systems", body: "Event-driven architecture with Apache Kafka, gRPC inter-service communication, fault-tolerant microservices containerised with Docker Compose.", wide: false, accent: "rgba(255,69,0,0.05)" },
+  { icon: Server, title: "Backend Systems", body: "Event-driven backends and microservices in Node.js, Express, Fastify, and Spring Boot: REST APIs, Prisma ORM, and Kafka between services.", wide: true, accent: "rgba(255,69,0,0.07)" },
+  { icon: Cloud, title: "Cloud & DevOps", body: "Deploying web and ML services on AWS (EC2, ECR, RDS, S3, Lambda, SES), containerised with Docker, run on Kubernetes, and shipped through CI/CD with GitHub Actions.", wide: false, accent: "rgba(34,197,94,0.07)" },
+  { icon: Bot, title: "AI Engineering", body: "LLM agents with tool calling and retrieval-augmented generation (RAG): an AI shopping copilot, and an exploration engine that writes self-repairing Playwright tests.", wide: false, accent: "rgba(91,192,235,0.07)" },
+  { icon: Code2, title: "DSA & Problem Solving", body: "1500+ problems solved. Codeforces Specialist (1409) · LeetCode max 1837.", wide: false, accent: "rgba(75,0,130,0.1)" },
+  { icon: Zap, title: "Performance", body: "Query and backend optimization, Redis-backed BullMQ queues. 30% faster API responses at Physics Wallah, 35% higher job throughput at Summentors PRO.", wide: false, accent: "rgba(255,69,0,0.05)" },
+  { icon: Shield, title: "Testing & Security", body: "4,400+ automated tests across fast, browser, and device tiers with mutation testing. RBAC, SSO integration, and OWASP ZAP scanning.", wide: false, accent: "rgba(34,197,94,0.05)" },
 ];
 
 const HOW_ICONS = [Search, PenTool, Rocket, FileText];
 
 const SKILL_GROUPS = [
-  { label: "Languages",        color: "#FF4500", items: ["TypeScript", "JavaScript", "Java", "Python", "C++", "SQL"] },
-  { label: "Frameworks",       color: "#a78bfa", items: ["Node.js", "NestJS", "Express.js", "Spring Boot", "React", "Prisma", "BullMQ", "gRPC"] },
-  { label: "Databases",        color: "#FFA116", items: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka"] },
-  { label: "Cloud & DevOps",   color: "#22C55E", items: ["Docker", "Kubernetes", "CI/CD", "AWS EC2", "Lambda", "RDS", "S3", "SES", "Amplify", "Prometheus", "Grafana", "Linux", "Git"] },
-  { label: "AI & ML",          color: "#5BC0EB", items: ["LLMs", "RAG", "AI Agents", "AI Proctoring", "AI Evaluation", "AI Voice Bots", "TTS", "STT"] },
-  { label: "Security & Auth",  color: "#FF8C00", items: ["JWT / RBAC", "OAuth / OTP", "Swagger"] },
-  { label: "Core CS",          color: "#e879f9", items: ["System Design", "Distributed Systems", "Operating Systems", "DBMS", "Computer Networks", "DSA"] },
+  { label: "Languages",          color: "#FF4500", items: ["C++", "Java", "Python", "TypeScript", "JavaScript", "SQL"] },
+  { label: "Backend",            color: "#a78bfa", items: ["Node.js", "Express.js", "Fastify", "Spring Boot", "Prisma ORM", "REST APIs", "Microservices", "Kafka", "BullMQ"] },
+  { label: "Databases",          color: "#FFA116", items: ["PostgreSQL", "Redis", "Qdrant"] },
+  { label: "Cloud & DevOps",     color: "#22C55E", items: ["AWS EC2", "RDS", "S3", "Lambda", "SES", "Docker", "Kubernetes", "CI/CD (GitHub Actions)"] },
+  { label: "AI Engineering",     color: "#5BC0EB", items: ["LLMs", "AI Agents", "Tool Calling", "RAG"] },
+  { label: "Frontend & Testing", color: "#FF8C00", items: ["React", "Next.js", "Playwright", "Appium", "OWASP ZAP", "Mutation Testing"] },
+  { label: "Core CS",            color: "#e879f9", items: ["DSA", "Operating Systems", "DBMS", "Computer Networks", "System Design"] },
 ];
 
 export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
@@ -162,7 +162,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
               <motion.div custom={0} variants={fadeUp} initial="hidden" animate="show" style={{ marginBottom: 28 }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 8, height: 28, padding: "0 14px", borderRadius: 9999, background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.2)", fontSize: 12, fontFamily: "var(--l-font-mono)", color: "#22C55E", letterSpacing: "0.5px" }}>
                   <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E", boxShadow: "0 0 0 3px rgba(34,197,94,0.25)" }} />
-                  Available · Open to internships &amp; full-time roles
+                  Available · Open to internships
                 </span>
               </motion.div>
 
@@ -185,25 +185,21 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
                   <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontFamily: "var(--l-font-mono)", fontSize: 12, color: "var(--l-text-muted)", letterSpacing: "0.3px" }}>
                     <GraduationCap size={13} style={{ color: "#22C55E" }} />
                     <span style={{ color: "#22C55E" }}>IIT Guwahati</span>
-                    <span>· CGPA 8.4 · Class of 2027</span>
+                    <span>· B.Tech DS &amp; AI · CGPA 8.29 · 2027</span>
                   </span>
                   <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontFamily: "var(--l-font-mono)", fontSize: 12, color: "var(--l-text-muted)" }}>
                     <MapPin size={12} style={{ color: "var(--l-primary)" }} />
-                    India
+                    {PERSON.location}
                   </span>
                 </div>
               </motion.div>
 
               <motion.p custom={4} variants={fadeUp} initial="hidden" animate="show" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 500, marginBottom: 36 }}>
-                <span style={{ color: "var(--l-text-soft)" }}>Passionate about </span>
-                <span style={{ color: "var(--l-primary)", fontWeight: 500 }}>backend engineering</span>
-                <span style={{ color: "var(--l-text-soft)" }}>, </span>
-                <span style={{ color: "#a78bfa", fontWeight: 500 }}>system design</span>
-                <span style={{ color: "var(--l-text-soft)" }}>, </span>
-                <span style={{ color: "#22C55E", fontWeight: 500 }}>cloud infrastructure</span>
-                <span style={{ color: "var(--l-text-soft)" }}>, and </span>
-                <span style={{ color: "#5BC0EB", fontWeight: 500 }}>modern AI applications</span>
-                <span style={{ color: "var(--l-text-soft)" }}>.</span>
+                <span style={{ color: "var(--l-text-soft)" }}>Backend and AI engineer working mainly in TypeScript and Java on </span>
+                <span style={{ color: "var(--l-primary)", fontWeight: 500 }}>event-driven backends</span>
+                <span style={{ color: "var(--l-text-soft)" }}> and </span>
+                <span style={{ color: "#5BC0EB", fontWeight: 500 }}>LLM agents</span>
+                <span style={{ color: "var(--l-text-soft)" }}>. Built and sold an AI test-automation platform that now runs in production.</span>
               </motion.p>
 
               <motion.div custom={5} variants={fadeUp} initial="hidden" animate="show" style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 40 }}>
@@ -238,9 +234,9 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
             {/* Right: portrait + phone + floating cards */}
             <div className="hero-visual" style={{ position: "relative", width: 460, height: 580, flexShrink: 0 }}>
               <div className="hero-float">
-                <FloatingCard label="Currently at" value="Physics Wallah" sub="Backend Dev · Bengaluru" accentColor="rgba(255,69,0,0.25)" dotColor="#FF4500" delay={0.7} floatDelay={0} style={{ top: 8, left: 0 }} />
+                <FloatingCard label="Currently at" value="Tattva" sub="Software Engineer Intern · Bengaluru" accentColor="rgba(255,69,0,0.25)" dotColor="#FF4500" delay={0.7} floatDelay={0} style={{ top: 8, left: 0 }} />
                 <FloatingCard label="LeetCode Max Rating" value="1837" sub="Top algorithmic problem solver" accentColor="rgba(255,161,22,0.25)" dotColor="#FFA116" delay={0.9} floatDelay={1.5} style={{ right: 0, top: 210 }} />
-                <FloatingCard label="IIT Guwahati" value="8.4 CGPA" sub="B.Sc. (Hons) DS & AI · 2027" accentColor="rgba(34,197,94,0.2)" dotColor="#22C55E" delay={1.1} floatDelay={0.8} style={{ bottom: 26, right: 0 }} />
+                <FloatingCard label="IIT Guwahati" value="8.29 CGPA" sub="B.Tech DS & AI · 2027" accentColor="rgba(34,197,94,0.2)" dotColor="#22C55E" delay={1.1} floatDelay={0.8} style={{ bottom: 26, right: 0 }} />
               </div>
 
               {/* Portrait */}
@@ -527,6 +523,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
                 </p>
 
                 {/* Metric tiles — the numbers lead, not the prose */}
+                {exp.metrics.length > 0 && (
                 <div className="exp-metrics" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 12, marginBottom: exp.highlights.length ? 20 : 22 }}>
                   {exp.metrics.map((m) => (
                     <div
@@ -550,6 +547,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
                     </div>
                   ))}
                 </div>
+                )}
 
                 {/* Non-numeric wins — prose, not a bullet list */}
                 {exp.highlights.length > 0 && (
@@ -584,8 +582,8 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
               <span style={{ background: "linear-gradient(90deg, #FF4500, #FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Build.</span>
             </h2>
             <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--l-text-soft)", maxWidth: 480, margin: "0 auto 40px" }}>
-              I&apos;m looking for software, DevOps, and infrastructure internships now,
-              and full-time roles from 2027. If your team is building something ambitious, let&apos;s talk.
+              I&apos;m looking for software engineering internships in backend, cloud, and AI.
+              If your team is building something ambitious, let&apos;s talk.
             </p>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
               <a href={`mailto:${PERSON.email}`} className="l-btn-primary"><Mail size={16} /> Send a message</a>
