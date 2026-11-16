@@ -53,15 +53,22 @@ date, and project on the site must match it. Anything not on the resume is remov
 |---|---|
 | Availability | "Open to internships" in hero badge, CTA, and page metadata; all full-time wording removed |
 | Person | Tagline = resume summary; location "Bengaluru, India" |
-| Education | B.Tech Data Science & AI, IIT Guwahati, 2023 – 2027 (Expected), CGPA **8.29** (was 8.4 / B.Sc.) |
-| Stats | 1500+ DSA problems · 8.29 CGPA · 3 industry internships · 4,400+ automated tests |
+| Education | B.Tech Data Science & AI, IIT Guwahati, 2023 – 2027 (Expected), CGPA **8.34** (was 8.4 / B.Sc.) |
+| Stats | 1500+ DSA problems · 8.34 CGPA · 3 industry internships · 4,400+ automated tests |
 | Experience | **Tattva Education Technologies** — Software Engineer Intern, Sep 2026 – Present (new, current) · **Physics Wallah** — Backend Developer Intern, Feb – Aug 2026 (no longer current) · **Summentors PRO** — Tech & Growth Solutions *Intern*, Mar – Jul 2026 · metrics/bullets rewritten from resume |
 | Projects | **AI Test Automation Platform** (acquired; new, featured first) · **Multi-Tenant CBT Platform** · **Payment Wallet** (4 Spring Boot services over Kafka) · **UrbanSole** (AI copilot, RAG, Qdrant, 933 users) — all rewritten from resume |
 | Skills / marquee | Exactly the resume skill list (adds Fastify, Qdrant, Next.js, Playwright, Appium, OWASP ZAP, mutation testing, tool calling, ECR; drops NestJS, gRPC, MongoDB, Prometheus, Grafana, Amplify, AI proctoring/voice bots) |
-| Hero cards | "Currently at Tattva", LeetCode 1837, IIT Guwahati 8.29 |
+| Hero cards | "Currently at Tattva", LeetCode 1837, IIT Guwahati 8.34 |
 | Expertise list | Rewritten so every claim is on the resume (no gRPC, NestJS, Prometheus, "40% latency") |
 | Achievements | Hackathon: 1st of 53 teams, PW Institute of Innovation, agritech IoT · CP: Codeforces Specialist 1409, LeetCode 1837 |
 | Resume file | You replace `public/resume.pdf` with the new PDF (I can't save the attached file for you) |
+
+### Follow-up task: product-engineering "How I work"
+
+Rewrite the 4 "How I work" steps (`HOW_I_WORK` in `lib/data.ts`) so they show a product-engineering approach:
+start from user pain points (as at Tattva), shape the smallest fix, build UX + backend end to end, then ship,
+measure, and iterate (as with Mixpanel funnels at Summentors PRO). Same 4-step layout, same icons slot count;
+only the text and the first icon change. Done = build passes and the section shows the new steps.
 
 Open decisions (answered before build): projects/experience not on the resume, and blog posts whose numbers
 disagree with the resume.

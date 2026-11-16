@@ -17,7 +17,7 @@ export const PERSON = {
 
 export const STATS = [
   { value: "1500+", label: "DSA problems solved" },
-  { value: "8.29", label: "CGPA at IIT Guwahati" },
+  { value: "8.34", label: "CGPA at IIT Guwahati" },
   { value: "3", label: "Industry internships" },
   { value: "4,400+", label: "Automated tests maintained" },
 ];
@@ -288,23 +288,23 @@ export const BLOGS = [
 export const HOW_I_WORK = [
   {
     step: "01",
-    title: "Discover & Scope",
-    description: "I start with the problem, not the solution. Requirements get mapped to data flows, edge cases surface early, and architecture decisions are made before a single line of code is written.",
+    title: "Understand the user",
+    description: "Start from real user pain points, not a feature list. At Tattva that means learning where UPSC aspirants get stuck before deciding what to build.",
   },
   {
     step: "02",
-    title: "Architect & Design",
-    description: "Clean data models, clear service boundaries, explicit API contracts. Every system is designed to be understood by the next engineer — not just to work today.",
+    title: "Shape the fix",
+    description: "Pick the smallest change that solves the pain, sketch the UX flow, and agree on what success looks like before writing code.",
   },
   {
     step: "03",
-    title: "Build & Optimise",
-    description: "Typed, modular code with consistent patterns. Every bottleneck gets profiled — slow queries, missing cache layers, blocking I/O — and fixed at the root cause.",
+    title: "Build end to end",
+    description: "Own the UX and the backend together, from data model to deployment, so the feature works as one piece instead of two halves.",
   },
   {
     step: "04",
-    title: "Ship & Document",
-    description: "Production readiness means more than passing tests. Swagger docs, structured onboarding notes, and monitoring are in place before the first deploy.",
+    title: "Ship, measure, iterate",
+    description: "Ship through CI/CD, watch how people actually use it, and improve. Funnel tracking at Summentors PRO lifted lead conversion by 12%.",
   },
 ];
 
@@ -346,5 +346,5 @@ export const EDUCATION = {
   degree: "B.Tech in Data Science & Artificial Intelligence",
   institution: "Indian Institute of Technology, Guwahati",
   expected: "2023 – 2027 (Expected)",
-  cgpa: "8.29 / 10",
+  cgpa: "8.34 / 10",
 };

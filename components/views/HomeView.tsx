@@ -14,7 +14,8 @@ import {
   Bot,
   MapPin,
   GraduationCap,
-  Search,
+  Users,
+  LineChart,
   PenTool,
   Rocket,
   FileText,
@@ -131,7 +132,7 @@ const bentoItems = [
   { icon: Shield, title: "Testing & Security", body: "4,400+ automated tests across fast, browser, and device tiers with mutation testing. RBAC, SSO integration, and OWASP ZAP scanning.", wide: false, accent: "rgba(34,197,94,0.05)" },
 ];
 
-const HOW_ICONS = [Search, PenTool, Rocket, FileText];
+const HOW_ICONS = [Users, PenTool, Rocket, LineChart];
 
 const SKILL_GROUPS = [
   { label: "Languages",          color: "#FF4500", items: ["C++", "Java", "Python", "TypeScript", "JavaScript", "SQL"] },
@@ -185,7 +186,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
                   <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontFamily: "var(--l-font-mono)", fontSize: 12, color: "var(--l-text-muted)", letterSpacing: "0.3px" }}>
                     <GraduationCap size={13} style={{ color: "#22C55E" }} />
                     <span style={{ color: "#22C55E" }}>IIT Guwahati</span>
-                    <span>· B.Tech DS &amp; AI · CGPA 8.29 · 2027</span>
+                    <span>· B.Tech DS &amp; AI · CGPA 8.34 · 2027</span>
                   </span>
                   <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontFamily: "var(--l-font-mono)", fontSize: 12, color: "var(--l-text-muted)" }}>
                     <MapPin size={12} style={{ color: "var(--l-primary)" }} />
@@ -236,7 +237,7 @@ export function HomeView({ onNavigate }: { onNavigate: (v: View) => void }) {
               <div className="hero-float">
                 <FloatingCard label="Currently at" value="Tattva" sub="Software Engineer Intern · Bengaluru" accentColor="rgba(255,69,0,0.25)" dotColor="#FF4500" delay={0.7} floatDelay={0} style={{ top: 8, left: 0 }} />
                 <FloatingCard label="LeetCode Max Rating" value="1837" sub="Top algorithmic problem solver" accentColor="rgba(255,161,22,0.25)" dotColor="#FFA116" delay={0.9} floatDelay={1.5} style={{ right: 0, top: 210 }} />
-                <FloatingCard label="IIT Guwahati" value="8.29 CGPA" sub="B.Tech DS & AI · 2027" accentColor="rgba(34,197,94,0.2)" dotColor="#22C55E" delay={1.1} floatDelay={0.8} style={{ bottom: 26, right: 0 }} />
+                <FloatingCard label="IIT Guwahati" value="8.34 CGPA" sub="B.Tech DS & AI · 2027" accentColor="rgba(34,197,94,0.2)" dotColor="#22C55E" delay={1.1} floatDelay={0.8} style={{ bottom: 26, right: 0 }} />
               </div>
 
               {/* Portrait */}
